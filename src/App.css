@@ -1,3 +1,32 @@
-body{background-color:#191624;}
+/* usman css  */
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;500;600;700&family=Rubik:ital,wght@0,300;0,400;0,500;0,700;1,300;1,600&display=swap');
+
+
+body {
+  font-family: 'Inconsolata', monospace !important;
+  font-family: 'Rubik', sans-serif !important;
+  overflow-x: hidden;
+  background-color: #191625 !important;
+} 
+  .fs_14px {
+  font-size: 14px !important;
+  }
+  .fs_13px {
+  font-size: 13px !important;
+  }
+  
+  .fs_10px {
+  font-size: 10px !important;
+  }
+  .fs_20px {
+  font-size: 20px !important;
+  }
+  .white_space {
+  white-space: nowrap;
+  }
+  
+  .test {
+  border: 2px solid red !important;
+  }
 
 
