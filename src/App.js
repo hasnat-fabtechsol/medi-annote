@@ -13,7 +13,7 @@ function App() {
 
       <Route element={<Layout/>}>
 
-      <Route path="/r" element={<Testa/>}/>
+      <Route path="/" element={<Testa/>}/>
       </Route>
     </Routes>
    </Router>
