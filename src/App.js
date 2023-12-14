@@ -9,6 +9,7 @@ import SideNav from './Dashboard/SideNav';
 import Project from './Pages/DashboardComponents/Project';
 import Dataset from './Pages/DashboardComponents/Dataset';
 import Members from './Pages/DashboardComponents/Members';
+import MemberPerformance from './Pages/DashboardComponents/MemberPerformance';
 
 
 function App() {
@@ -25,7 +26,11 @@ function App() {
         <Route path="/project" element={<Project />}/>
         <Route path="/dataset" element={<Dataset />}/>
         <Route path="/members" element={<Members />}/>
-        
+        <Route path="/memberperformance" element={<MemberPerformance />}/>
+
+     
+
+
   
        </Route>
       

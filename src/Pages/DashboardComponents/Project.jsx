@@ -38,13 +38,13 @@ const Project = () => {
                     <div className="">
                     <p className="text-white mb-0">Give a unique Project name</p>
                     <div className="d-flex flex-lg-row flex-column align-items-start justify-content-start gap-2">
-                    <div className="col-lg-8">
-                        <form action="" className="d-flex align-items-center gap-3">
-                        <div  className=" mb-lg-0 mb-1 w-100">
+                    <div className="col-lg-8 col-12">
+                        <form action="" className="d-flex flex-md-nowrap flex-wrap align-items-center gap-3">
+                        <div  className=" mb-lg-0 mb-1 w-75">
                     
                         <input
                             type="text "
-                            class="form-control custom-width border-0 text-white  rounded-3   w-100"
+                            class="form-control custom-width border-0 text-white  rounded-3  "
                             placeholder="Type Here"
                             aria-label="Text"
                             style={{ backgroundColor: "#212121" , outline:"none" ,  boxShadow: 'none' , height:"52px"}}

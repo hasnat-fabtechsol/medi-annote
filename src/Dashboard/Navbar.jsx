@@ -82,7 +82,7 @@ import { NavLink} from "react-router-dom";
         </li>
         <li className="nav-item  dropdown">
           <NavLink
-            className="nav-link text-light"
+            className=" text-light btn"
             exact
             activeClassName="active"
             to="/faq"
@@ -96,7 +96,7 @@ import { NavLink} from "react-router-dom";
 
         <li className="nav-item">
           <NavLink
-            className="nav-link text-light"
+            className=" text-light btn"
             exact
             activeClassName="active"
             to="/about-us"
@@ -110,9 +110,11 @@ import { NavLink} from "react-router-dom";
   
         </li>
         <li>
+        <Hidden mdUp>
         <IconButton onClick={handleDrawerToggle}>
     <MenuIcon style={{color:"white"}} />
   </IconButton>
+  </Hidden>
         </li>
   
     

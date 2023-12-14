@@ -20,68 +20,85 @@ import {
   import IconButton from '@mui/material/IconButton';
   import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
   import TextField from '@mui/material/TextField';
-  import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+//   import search icon
+import SearchIcon from '@mui/icons-material/Search';
 
 
 
 
-const Members = () => {
+
+
+
+
+const MemberPerformance = () => {
   
-    const [role, setRole] = React.useState('');
-
-    const handleChange = (event) => {
-      setRole(event.target.value);
-    };
+    
 
     
         
 
     const Data = [
         {
-          name: "Mona",
-          email: "mona@gmail.com",
-            Role:"Annotator",
-            action:""
-          
+            teamMember: "Sunilreddy",
+            label: "4",
+            lastActivity: "1 Days ago",
+            timePerLabel: "25m.33sec",
+            reviewAcceptancePercent: "10",
+            reviewAcceptanceDigit: "9",
+            consensue: "100%"
+
         },
-        { 
-            name: "Mona",
-            email: "mona@gmail.com",
-            Role:"Review",
-            action:""
+        {
+            teamMember: "Sunilreddy",
+            label: "4",
+            lastActivity: "1 Days ago",
+            timePerLabel: "25m.33sec",
+            reviewAcceptancePercent: "10",
+            reviewAcceptanceDigit: "9",
+            consensue: "100%"
 
+        },
+        {
+            teamMember: "Sunilreddy",
+            label: "4",
+            lastActivity: "1 Days ago",
+            timePerLabel: "25m.33sec",
+            reviewAcceptancePercent: "10",
+            reviewAcceptanceDigit: "9",
+            consensue: "100%"
 
-         },
-        { name: "Mona",
-        email: "mona@gmail.com",
-        
-        Role:"Admin",
-        action:""
-         },
+        },
+        {
+            teamMember: "Sunilreddy",
+            label: "4",
+            lastActivity: "1 Days ago",
+            timePerLabel: "25m.33sec",
+            reviewAcceptancePercent: "10",
+            reviewAcceptanceDigit: "9",
+            consensue: "100%"
+
+        }
       
       ];
     return (
-        <div className="">
-            <div className="container  px-3">
+        <div className="px-3">
+            <div className="container ">
                 <div className="row">
                 <div className=" col-12 rounded-4  py-4 px-4 " style={{backgroundColor:"#0A0C12"}}>
-                    <h4 className="fw-medium text-white mb-3">Project Members</h4>
+                    <h4 className="fw-medium text-white mb-3">Search</h4>
                     <div className="">
-                   
+                   <p>Search Member Statistic</p>
                     <div className="d-flex flex-lg-row flex-column align-items-start justify-content-start gap-2">
-                    <div className="col-lg-10 col-12">
+                    <div className="col-lg-8 col-12">
                     <form action="" className="">
                        
-                        <div className='d-flex flex-md-nowrap flex-wrap align-items-center gap-3'>
+                        <div className='d-flex flex-wrap align-items-center gap-3'>
                        
                             <TextField
-                                type="email"
+                                type="search"
                                 variant="outlined"
                                 className="w-75"
-                                placeholder="Type Here"
+                                placeholder="Search"
                                 InputProps={{
                                 style: {
                                     backgroundColor: "#212121",
@@ -90,31 +107,24 @@ const Members = () => {
                                     outline: 'none',
                                     boxShadow: 'none',
                                     height: '45px'
-                                }
+                                },
+                                startAdornment: (
+                                    <SearchIcon style={{ color: "#A7AEBF" }} />
+                                )
+
+
                                 }}
                               
                             />
-                            <FormControl className='rounded-4'  style={{minWidth:"140px" , color:"white", backgroundColor:"#212121"}}>
-                                <InputLabel id="demo-simple-select-label text-white" style={{color:"#2C9BF6"}}>Select</InputLabel>
-                                <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={role}
-                                label="Select"
-                                onChange={handleChange}
-                                >
-                                <MenuItem value={10}>Annotator</MenuItem>
-                                <MenuItem value={20}>Review</MenuItem>
-                                <MenuItem value={30}>Admin</MenuItem>
-                                </Select>
-                            </FormControl>
+                            
+
                         <Button
                             type="submit"
                             variant="contained"
                             className="px-5 py-2 text-white"
-                            style={{ backgroundColor: "#2D9BF6" , width:"240px" , textTransform:"capitalize" , borderRadius:"16px" }}
+                            style={{ backgroundColor: "#2D9BF6" , width:"240px" , textTransform:"capitalize" , borderRadius:"8px" }}
                         > 
-                            Send Invitation
+                            Search
                         </Button>
 
                         </div>
@@ -156,10 +166,13 @@ const Members = () => {
                             }
                             }
                             th={{
-                                name: "Username ",
-                                email:"Email",
-                                Role:"Role",
-                                action:"Action"
+                                teamMember: "Team Member",
+                                label: "Label",
+                                lastActivity: "Last Activity",
+                                timePerLabel: "Time Per Label",
+                                reviewAcceptancePercent: "Review Acceptance (%)",
+                                reviewAcceptanceDigit: "Review Acceptance (0-9)",
+                                consensue: "Consensue"
                             }}
 
                             //   columns={columns}
@@ -184,4 +197,4 @@ const Members = () => {
     );
 };
 
-export default Members;
+export default MemberPerformance;

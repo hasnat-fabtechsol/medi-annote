@@ -59,9 +59,9 @@ const Dataset = () => {
                     <div className="">
                     <p className="text-white mb-0">Upload a dataset</p>
                     <div className="d-flex flex-lg-row flex-column align-items-start justify-content-start gap-2">
-                    <div className="col-lg-8 col-12">
+                    <div className="col-lg-10 col-12">
                     <form action="" className="">
-                        <div className='d-flex align-items-center gap-3 mb-3'>
+                        <div className='d-flex flex-md-nowrap flex-wrap align-items-center gap-3 mb-3'>
                             <div className="bg-gray rounded-4 w-75 p-2" style={{backgroundColor:"#212121"}} >
                                 <Button
                                     variant="contained"
@@ -88,7 +88,7 @@ const Dataset = () => {
                                 
                             </Button>
                         </div>
-                        <div className='d-flex align-items-center gap-3'>
+                        <div className='d-flex flex-md-nowrap flex-wrap align-items-center gap-3'>
                        
                             <TextField
                                 type="text"
