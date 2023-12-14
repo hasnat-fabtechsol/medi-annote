@@ -49,16 +49,7 @@ const listItemData = [
     link: `/`,
     icon: <ShareOutlinedIcon style={{fontSize:"20px"}} />
   },
-  {
-    label: "Dataset",
-    link: "/",
-    icon: <FaGraduationCap style={{fontSize:"20px"}}/>
-  },
-  {
-    label: "Labels",
-    link: "/",
-    icon: <FaGraduationCap style={{fontSize:"20px"}}/>
-  },,
+  
   {
     label: "Members",
     link: "/",

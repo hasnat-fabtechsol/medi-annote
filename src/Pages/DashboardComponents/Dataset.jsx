@@ -82,7 +82,7 @@ const Dataset = () => {
                                 component="label"
                                 startIcon={<CloudUploadIcon />
                             }
-                                style={{width:"200px" , backgroundColor:"#2C9BF6"}}
+                                style={{width:"200px" , backgroundColor:"#2C9BF6" , borderRadius:"16px" , textTransform:"capitalize"}}
                             >
                                 Upload 
                                 
@@ -111,7 +111,7 @@ const Dataset = () => {
                             type="submit"
                             variant="contained"
                             className="px-5 py-2 text-white"
-                            style={{ backgroundColor: "#2D9BF6" , width:"200px" }}
+                            style={{ backgroundColor: "#2D9BF6" , width:"200px" , textTransform:"capitalize" , borderRadius:"16px" }}
                         > 
                             Add Label
                         </Button>
