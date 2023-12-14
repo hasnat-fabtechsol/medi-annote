@@ -7,6 +7,7 @@ import DashboardLayout from './Dashboard/DashboardLayout';
 import Header from './Dashboard/Header';
 import SideNav from './Dashboard/SideNav';
 import Project from './Pages/DashboardComponents/Project';
+import Dataset from './Pages/DashboardComponents/Dataset';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       
       <Route element={<DashboardLayout/>}>
         <Route path="/project" element={<Project />}/>
+        <Route path="/dataset" element={<Dataset />}/>
   
        </Route>
       

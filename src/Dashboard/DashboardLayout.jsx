@@ -37,7 +37,7 @@ return (
   <Header />
   </div>
   
-  <Box className='px-1 px-md-3 pt-5 pb-2 zoom' style={{backgroundColor:"#181922"}}
+  <Box className='px-1 px-md-3 pt-5 pb-2 zoom' style={{backgroundColor:"#181922" , height:"fit-content"}}
     component="div"
     sx={{
       flexGrow: 1,
