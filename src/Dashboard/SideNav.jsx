@@ -109,7 +109,7 @@ function SideNav(props) {
           {listItemData.map((value, i) => (
             <div key={i}>
               <div className=" my-0 mx-4 " >
-                <RenderItem value={value} i={i} />
+                <RenderItem value={value} i={i} style={{ fontSize: "2rem" }} />
               </div>
             </div>
           ))}
@@ -207,7 +207,7 @@ function SideNav(props) {
           display: { xs: "none", md: "block" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
-            bgcolor: "black",
+            bgcolor: "#272938",
             color: "#AFB7BE",
             width: drawerWidth,
             zIndex: { md: 1100, xs: 1200 },
@@ -244,16 +244,16 @@ const RenderItem = ({ value, i }) => {
         className="list-item list_text "
         sx={{ ...buttonStyle }}
       >
-        <ListItemIcon className="myIconClass" sx={{ color: "white", marginRight: -3 }}> {value.icon}</ListItemIcon>
-        <ListItemText className="" primary={<Typography variant="body2" style={{ fontSize: 14, color: "white", paddingLeft: 0 }} title={value.label}>{value.label}</Typography>} />
+        <ListItemIcon className="myIconClass" sx={{ color: "#A7AEBF", marginRight: -3 }}> {value.icon}</ListItemIcon>
+        <ListItemText className="" primary={<Typography variant="body1" style={{ fontSize: 16, color: "#A7AEBF", paddingLeft: 0 }} title={value.label}>{value.label}</Typography>} />
       </ListItemButton>
     </ListItem> :
 
       <ListItemButton className="list-item list_text no_link_list_item "
         sx={{ ...buttonStyle, "&:hover": { backgroundColor: "" } }}
       >
-        <ListItemIcon className="myIconClass" sx={{ color: "white", }}>{value.icon}</ListItemIcon>
-        <ListItemText className="" primary={<Typography variant="body2" style={{ fontSize: 14, color: "white", fontWeight: "bold" }} title={value.label}>{value.label}</Typography>} />
+        <ListItemIcon className="myIconClass" sx={{ color: "#A7AEBF", }}>{value.icon}</ListItemIcon>
+        <ListItemText className="" primary={<Typography variant="body2" style={{ fontSize: 16, color: "#A7AEBF", fontWeight: "bold" }} title={value.label}>{value.label}</Typography>} />
       </ListItemButton>
   );
 };
