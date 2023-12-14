@@ -98,7 +98,7 @@ const Layout = () => {
   </div>
 </nav>
 
-         <main className=''>
+         <main className='' style={{height:"70vh"}}>
                 <div className=''>
                     <Outlet />
                 </div>

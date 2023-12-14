@@ -30,3 +30,32 @@ body {
   }
 
 
+  input::-webkit-input-placeholder {
+    color: #8C8C8C !important;
+}
+
+input:-moz-placeholder {
+    color: #8C8C8C !important;
+}
+/* OtpInput.css */
+
+
+
+.otp-input {
+  width: 40px !important; /* Adjust the width as needed */
+  height: 40px !important; /* Adjust the height as needed */
+  font-size: 16px !important; /* Adjust the font size as needed */
+  margin: 0 5px !important; /* Adjust the margin as needed */
+  text-align: center !important;
+  border: 1px solid #1F649F !important; /* Remove default border */
+  background-color: black !important; /* Set the background color to black */
+  color:  #1F649F !important; /* Set the text color to white */
+  border-radius: 8px !important; /* Set the border radius to round the corners */
+}
+
+.otp-input::placeholder {
+  color: white !important; /* Set the placeholder text color to white */
+  opacity: 0.5 !important; /* Adjust the opacity as needed */
+}
+
+/* Add more styles as needed for the separator or any other customization */
