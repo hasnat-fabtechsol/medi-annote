@@ -32,6 +32,7 @@ import { Link } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { PiNotebookLight } from "react-icons/pi";
 import { FaGraduationCap } from "react-icons/fa6";
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 
 // import { useDispatch } from "react-redux";
 
@@ -46,7 +47,7 @@ const listItemData = [
   {
     label: "Project",
     link: `/`,
-    icon: <RxDashboard style={{fontSize:"20px"}} />
+    icon: <ShareOutlinedIcon style={{fontSize:"20px"}} />
   },
   {
     label: "Dataset",
@@ -69,16 +70,7 @@ const listItemData = [
     icon: <PiNotebookLight style={{fontSize:"20px"}}/>
   },
   
-  {
-    label: "Courses",
-    link: "/courses",
-    icon: <PiNotebookLight style={{fontSize:"20px"}}/>
-  },
-  {
-    label: "Created Certificates",
-    link: "/certificate",
-    icon: <PiNotebookLight style={{fontSize:"20px"}}/>
-  },
+  
 
 
 ];
@@ -192,9 +184,9 @@ function SideNav(props) {
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
-            bgcolor: "#FFFFFF",
+            bgcolor: "#272938",
             color: "#AFB7BE",
-            zIndex: { md: 1000, xs: 1200 },
+            zIndex: { md: 1400, xs: 1400 },
           },
         }}
       >

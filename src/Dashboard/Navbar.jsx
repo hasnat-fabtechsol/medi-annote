@@ -33,7 +33,7 @@ import { NavLink} from "react-router-dom";
 
     return (
     <Box className="" >
-       <div className="navbar  navbar-expand-lg position-absolute w-100 d-flex navbar-light navbg  "  style={{backgroundColor:"#090B11",color:"white",zIndex:"1199"}}>
+       <div className="navbar  navbar-expand-lg me-4 position-absolute w-100 d-flex navbar-light navbg  "  style={{backgroundColor:"#090B11",color:"white",zIndex:"1199"}}>
   <div className="container-fluid  shrink2 my-2">
    
 
@@ -49,7 +49,7 @@ import { NavLink} from "react-router-dom";
       </div> */}
     </Link>
     
-    <button
+    {/* <button
       className="navbar-toggler navbar-togl-btn"
       type="button"
       data-bs-toggle="collapse"
@@ -59,13 +59,13 @@ import { NavLink} from "react-router-dom";
       aria-label="Toggle navigation"
     >
       <span className=" navbar-toggler-icon text-white"></span>
-    </button>
+    </button> */}
 
-    <div className="collapse navbar-collapse " id="navbarSupportedContent">
+    <div className=" " id="">
      
       <div className="d-flex justify-content-end mx-1 w-100">
         {/* <div className="col-lg-12 d-flex justify-content-end align-items-center mb-3 mb-lg-0 text-white gap-2"> */}
-        <ul className="navbar-nav mb-2 mb-lg-0">
+        <ul className="d-flex list-unstyled mb-2 mb-lg-0">
         <li className="nav-item">
           {/* <NavLink 
             style={{ padding:"9px 30px", fontSize: '16px', maxWidth:"fit-content" }}
@@ -111,7 +111,7 @@ import { NavLink} from "react-router-dom";
         </li>
         <li>
         <IconButton onClick={handleDrawerToggle}>
-    <MenuIcon style={{color:"black"}} />
+    <MenuIcon style={{color:"white"}} />
   </IconButton>
         </li>
   

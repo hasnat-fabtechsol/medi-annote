@@ -6,7 +6,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TableSortLabel
+  TableSortLabel,
+  Pagination
 } from "@mui/material"; 
 import { LoadingOverlaySmall } from "./LoadingOverlay";
 
@@ -73,8 +74,15 @@ export default function TableMui({
           ))}
         </TableBody>
       )}
+     
     </Table>
+    <div className="mt-auto d-flex justify-content-between px-3 text-white py-3"> 
+    <h6 style={{color: "#2C9BF6"}}><span>7</span> Projects</h6>
+    <Pagination count={10} size="small" style={{ color: 'white' }}  />
+    </div>
+    
   </TableContainer>
+  
   {loading && <LoadingOverlaySmall open={loading} />}
   </>
 
@@ -125,7 +133,7 @@ const MuiTableRow = ({ values }) => {
   return (
     <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
       {Object.keys(th).map((key, ind) => (
-        <TableCell key={ind} style={{ whiteSpace: "nowrap" }} align="left">
+        <TableCell key={ind} style={{ whiteSpace: "nowrap" , backgroundColor:"#0B121C" , color:"#fff" , borderColor:"#090B11" }} align="left">
           {
            (customFields && found(key))? found(key).data(row[key], row) : getNestedValue(row,key)
           }
