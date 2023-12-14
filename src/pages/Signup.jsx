@@ -52,9 +52,11 @@ export const Signup = () => {
     <label class="form-check-label" for="exampleCheck1">I agree to the Terms of Service and Privacy Policy.</label>
   </div>
   <div className="text-center mb-5 mt-3 ">
+<Link to={"/email-confirmation"}>
 
   <button type="submit" class="btn btn-primary text-center px-5  mb-4 mx-auto">Sign up</button>
-  <p>Already a member? <Link  >Sign in </Link> </p>
+</Link>
+  <p>Already a member? <Link to={"/sign-in"}  >Sign in </Link> </p>
   </div>
 </div>
         </div>

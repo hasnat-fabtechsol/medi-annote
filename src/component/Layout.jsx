@@ -105,7 +105,7 @@ const Layout = () => {
             </main>
 
 
-      <footer
+      {/* <footer
         className=" text-dark p-md-4 p-2"
 
       >
@@ -120,9 +120,7 @@ const Layout = () => {
                 <p className='text_color'>&copy; 2023 Electrocoin d.o.o</p>
             </div>
             <div className=' col-md-4 d-flex justify-content-center  gap-2'>
-                {/* <FacebookIcon style={{ color: '#F8A035', fontSize: 30 }} />
-                <FaLinkedinIn style={{ color: '#F8A035', fontSize: 30 }}/>
-                <FaInstagram style={{ color: '#F8A035', fontSize: 30 }}/> */}
+            
             </div>
             
             <div className=' col-md-4 d-flex justify-content-center  gap-3'> 
@@ -142,7 +140,7 @@ const Layout = () => {
           <p>All rights reserved Maintained & Developed by <Link to="https://fabtechsol.com/">Fabtechsol </Link>  &copy; 2023</p>
         </div>
 
-      </footer>
+      </footer> */}
         
     </div>
   )

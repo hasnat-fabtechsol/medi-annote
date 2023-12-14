@@ -46,7 +46,7 @@ export default function Signin() {
     <label style={{fontSize:"11px"}} class="form-check-label" for="exampleCheck1">Remember password</label>
   </div>
 
-  <p style={{fontSize:"11px"}}> <Link style={{textDecoration:"none"}}>Forgot password?</Link></p>
+  <p style={{fontSize:"11px"}}> <Link to={"/password-recover"} style={{textDecoration:"none"}}>Forgot password?</Link></p>
 </div>
 
 </div>

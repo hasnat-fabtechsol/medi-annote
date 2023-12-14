@@ -35,8 +35,10 @@ export default function PasswordRecover() {
 
 <div className="row ">
 <p className='text-center' style={{fontSize:"11px",color:"#1F649F"}}>Send again</p>
+<Link to={"/new-password"} className='text-center'>
 
   <button  type="submit" class="btn text-light btn-primary mt-5 text-center px-5 mb-2  mx-auto">Submit</button>
+</Link>
   
   
 </div>

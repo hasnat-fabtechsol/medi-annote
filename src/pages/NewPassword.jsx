@@ -40,9 +40,11 @@ export default function NewPassword() {
 </div>
 
 <div className="row ">
-
+<Link to={"/password-changed"} className='text-center'>
 
   <button  type="submit" class="btn text-light btn-primary mt-5 text-center px-5 mb-2  mx-auto">Submit</button>
+</Link>
+
   
   
 </div>

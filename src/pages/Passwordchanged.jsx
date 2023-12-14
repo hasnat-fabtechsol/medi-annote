@@ -28,8 +28,10 @@ export default function Passwordchanged() {
 
 <div className="row ">
 
+<Link to={"/sign-in"} className='text-center'>
 
   <button  type="submit" class="btn text-light btn-primary mt-5 text-center px-5 mb-2  mx-auto">Back to Sign in</button>
+</Link>
   
   
 </div>
