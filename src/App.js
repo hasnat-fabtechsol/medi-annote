@@ -9,6 +9,13 @@ import Signin from './pages/Signin';
 import PasswordRecover from './pages/PasswordRecover';
 import NewPassword from './pages/NewPassword';
 import Passwordchanged from './pages/Passwordchanged';
+import DashboardLayout from './Dashboard/DashboardLayout' ;
+import Project from './Pages/DashboardComponents/Project';
+import Dataset from './Pages/DashboardComponents/Dataset';
+import Members from './Pages/DashboardComponents/Members';
+import MemberPerformance from './Pages/DashboardComponents/MemberPerformance';
+
+
 
 
 function App() {
