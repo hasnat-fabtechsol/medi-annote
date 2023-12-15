@@ -29,6 +29,10 @@ html body table td{
 
 }
 
+.MuiDrawer-modal {
+ z-index: 1400 !important;
+}
+
 
   
 

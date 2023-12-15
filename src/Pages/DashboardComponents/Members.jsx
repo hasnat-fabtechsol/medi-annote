@@ -66,10 +66,9 @@ const Members = () => {
       
       ];
     return (
-        <div className="px-3">
+        <div className="">
             <div className="container  ">
-                <div className="row">
-                <div className=" col-12 rounded-4  py-4 px-4 " style={{backgroundColor:"#0A0C12"}}>
+            <div className="  rounded-4  py-4 px-4 " style={{backgroundColor:"#0A0C12"}}>
                     <h4 className="fw-medium text-white mb-3">Project Members</h4>
                     <div className="">
                    
@@ -136,10 +135,12 @@ const Members = () => {
                 </div>
                 
 
-                <div className="d-flex h-100 py-y mb-4 px-0" style={{ overflow: "auto" }}>
+                <div className=" h-100 py-y mb-4 px-0" >
+                    <div className="row">
                     <div className="col-lg-12 h-100 col-md-12 col-12 ">
-                        <div className="mt-3 h-100">
+                        <div className="mt-3 h-100 ">
                             {/* TableMui */}
+                            <div className='w-100 '>
                             <TableMui
                             styleTableThead={{
                                 "& th": {
@@ -170,9 +171,8 @@ const Members = () => {
 
                             //   columns={columns}
                             td={Data}
-
-
                             />
+                            </div>
 
         
 
@@ -183,8 +183,12 @@ const Members = () => {
                     
                     
                     </div>
+                    </div>
+                   
                 </div>
-                </div>
+                
+                
+                
             </div>   
         </div>
     );

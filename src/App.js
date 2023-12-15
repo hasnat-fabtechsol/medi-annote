@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './component/Layout';
 import Testa from './component/Testa';
-import { Signup } from './pages/Signup';
-import EmailConfirmation from './pages/EmailConfirmation';
-import Signin from './pages/Signin';
-import PasswordRecover from './pages/PasswordRecover';
-import NewPassword from './pages/NewPassword';
-import Passwordchanged from './pages/Passwordchanged';
+import { Signup } from './Pages/Signup';
+import EmailConfirmation from './Pages/EmailConfirmation';
+import Signin from './Pages/Signin';
+import PasswordRecover from './Pages/PasswordRecover';
+import NewPassword from './Pages/NewPassword';
+import Passwordchanged from './Pages/Passwordchanged';
 import DashboardLayout from './Dashboard/DashboardLayout' ;
 import Project from './Pages/DashboardComponents/Project';
 import Dataset from './Pages/DashboardComponents/Dataset';
@@ -42,11 +42,6 @@ function App() {
         <Route path="/dataset" element={<Dataset />}/>
         <Route path="/members" element={<Members />}/>
         <Route path="/memberperformance" element={<MemberPerformance />}/>
-
-     
-
-
-  
        </Route>
       
     </Routes>

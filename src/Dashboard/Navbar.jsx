@@ -33,7 +33,9 @@ import { NavLink} from "react-router-dom";
 
     return (
     <Box className="" >
-       <div className="navbar  navbar-expand-lg me-4 position-absolute w-100 d-flex navbar-light navbg  "  style={{backgroundColor:"#090B11",color:"white",zIndex:"1199"}}>
+                 <AppBar className='nav-bg' position="fixed" sx={{ backgroundColor:"#090B11", boxShadow:"0" ,zIndex:"1390"}}>
+       <Toolbar className=''  style={{display:'flex',justifyContent:'space-between',minHeight:'80px'}} >
+       <div className="navbar  navbar-expand-lg  position-absolute  w-100 d-flex navbar-light navbg  "  style={{backgroundColor:"#090B11",color:"white" , right:"0px"}}>
   <div className="container-fluid flex-nowrap  shrink2 my-2">
    
 
@@ -126,7 +128,8 @@ import { NavLink} from "react-router-dom";
     </div>
   </div>
 </div>
-              
+</Toolbar>   
+</AppBar>
            
         </Box>
     );

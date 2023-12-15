@@ -25,8 +25,10 @@ const Project = () => {
           name: "Projects name 01",
         },
         { name: "Projects name 01" },
-        { name: "Projects name 01" },
-        { name: "Projects name 01" },
+        { name: "Projects name 02" },
+        { name: "Projects name 03" },
+        { name: "Projects name 04" },
+       
       
       ];
     return (
