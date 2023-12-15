@@ -38,8 +38,8 @@ html body table td{
 
 
 body {
-  font-family: 'Inconsolata', monospace !important;
-  font-family: 'Rubik', sans-serif !important;
+  /* font-family: 'Inconsolata', monospace !important;
+  font-family: 'Rubik', sans-serif !important; */
   overflow-x: hidden;
   background-color: #191625 !important;
 } 

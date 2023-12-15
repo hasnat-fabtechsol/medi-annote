@@ -33,7 +33,7 @@ const Project = () => {
       ];
     return (
         <div className="">
-            <div className="container  px-3">
+            <div className="container">
                 <div className="row">
                 <div className=" col-12 rounded-4  py-4 px-4 " style={{backgroundColor:"#0A0C12"}}>
                     <h4 className="fw-medium text-white mb-3">Create Project</h4>

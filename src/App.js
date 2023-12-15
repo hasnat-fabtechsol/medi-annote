@@ -14,6 +14,7 @@ import Project from './Pages/DashboardComponents/Project';
 import Dataset from './Pages/DashboardComponents/Dataset';
 import Members from './Pages/DashboardComponents/Members';
 import MemberPerformance from './Pages/DashboardComponents/MemberPerformance';
+import ToolLayout from './AnnotateLayout/ToolLayout';
 
 
 
@@ -42,7 +43,11 @@ function App() {
         <Route path="/dataset" element={<Dataset />}/>
         <Route path="/members" element={<Members />}/>
         <Route path="/memberperformance" element={<MemberPerformance />}/>
-       </Route>
+      </Route>
+
+      <Route element={<ToolLayout/>}>
+        <Route path="/tool" element={<Testa/>}/>
+      </Route>
       
     </Routes>
    </Router>
