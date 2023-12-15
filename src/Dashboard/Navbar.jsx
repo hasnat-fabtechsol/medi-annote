@@ -34,7 +34,7 @@ import { NavLink} from "react-router-dom";
     return (
     <Box className="" >
        <div className="navbar  navbar-expand-lg me-4 position-absolute w-100 d-flex navbar-light navbg  "  style={{backgroundColor:"#090B11",color:"white",zIndex:"1199"}}>
-  <div className="container-fluid  shrink2 my-2">
+  <div className="container-fluid flex-nowrap  shrink2 my-2">
    
 
     <Link style={{fontSize:"25px"}} className=" ms-2 text-white fs-bold text-decoration-none" to="/">
@@ -81,25 +81,27 @@ import { NavLink} from "react-router-dom";
    
         </li>
         <li className="nav-item  dropdown">
+        <Hidden smDown>
           <NavLink
-            className=" text-light btn"
+            className=" text-light btn rounded-3 "
             exact
             activeClassName="active"
-            to="/faq"
+            to="/"
             title="Faq"
-            style={{ fontSize: '16px', padding:"9px ", maxWidth:"fit-content",marginInline:"30px"}}
+            style={{ fontSize: '16px', padding:"7px 34px ", maxWidth:"fit-content",marginInline:"30px" , backgroundColor:"#2C9BF6"}}
            
           >
             Log in
           </NavLink>
+          </Hidden>
         </li>
 
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink
             className=" text-light btn"
             exact
             activeClassName="active"
-            to="/about-us"
+            to="/"
             title="ABout us"
             style={{ fontSize: '16px' , padding:"9px ", maxWidth:"fit-content",marginInline:"30px"}}
            
@@ -108,7 +110,7 @@ import { NavLink} from "react-router-dom";
           </NavLink>
          
   
-        </li>
+        </li> */}
         <li>
         <Hidden mdUp>
         <IconButton onClick={handleDrawerToggle}>

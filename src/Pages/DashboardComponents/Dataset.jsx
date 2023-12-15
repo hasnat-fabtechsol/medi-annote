@@ -62,7 +62,7 @@ const Dataset = () => {
                     <div className="col-lg-10 col-12">
                     <form action="" className="">
                         <div className='d-flex flex-md-nowrap flex-wrap align-items-center gap-3 mb-3'>
-                            <div className="bg-gray rounded-4 w-75 p-2" style={{backgroundColor:"#212121"}} >
+                            <div className="bg-gray rounded-3 w-75 p-2" style={{backgroundColor:"#212121"}} >
                                 <Button
                                     variant="contained"
                                     component="label"
@@ -72,17 +72,20 @@ const Dataset = () => {
                                     <AddOutlinedIcon style={{ fontSize: '18px', color: 'white' ,  }} />
                                         <input
                                         type="file"
+                                        placeholder='Upload File'
                                         hidden
                                         onChange={handleFileUpload}
                                         />
+                                        
                                 </Button>
+                                <span className="text-white ms-2">Select File</span>
                             </div>
                             <Button
                                 variant="contained"
                                 component="label"
                                 startIcon={<CloudUploadIcon />
                             }
-                                style={{width:"200px" , backgroundColor:"#2C9BF6" , borderRadius:"16px" , textTransform:"capitalize"}}
+                                style={{width:"200px",padding:"8px 24px" , backgroundColor:"#2C9BF6" , borderRadius:"10px" , textTransform:"capitalize"}}
                             >
                                 Upload 
                                 
@@ -99,7 +102,7 @@ const Dataset = () => {
                                 style: {
                                     backgroundColor: "#212121",
                                     color: 'white',
-                                    borderRadius: '16px',
+                                    borderRadius: '10px',
                                     outline: 'none',
                                     boxShadow: 'none',
                                     height: '45px'
@@ -111,7 +114,7 @@ const Dataset = () => {
                             type="submit"
                             variant="contained"
                             className="px-5 py-2 text-white"
-                            style={{ backgroundColor: "#2D9BF6" , width:"200px" , textTransform:"capitalize" , borderRadius:"16px" }}
+                            style={{ backgroundColor: "#2D9BF6" , width:"200px" , textTransform:"capitalize" , borderRadius:"10px" }}
                         > 
                             Add Label
                         </Button>
@@ -165,7 +168,7 @@ const Dataset = () => {
                             /> */}
 
         <Grid item xs={12} className="mt-3" sx={{ overflowY: "auto" }}>
-                <TableContainer className="d-flex flex-column" component={Paper} style={{backgroundColor:"#090B11" , borderRadius: "10px", height:"calc(100vh - 320px)",}}>
+                <TableContainer className="d-flex flex-column" component={Paper} style={{backgroundColor:"#090B11" , borderRadius: "10px"}}>
                 <Table>
                     <TableHead sx={{ backgroundColor: "#272938", color: "white" }}>
                     <TableRow className="rounded-4" style={{borderColor:"#090B11" ,  borderBottomWidth:"1px"}}>

@@ -28,6 +28,8 @@ import Select from '@mui/material/Select';
 
 
 
+
+
 const Members = () => {
   
     const [role, setRole] = React.useState('');
@@ -64,8 +66,8 @@ const Members = () => {
       
       ];
     return (
-        <div className="">
-            <div className="container  px-3">
+        <div className="px-3">
+            <div className="container  ">
                 <div className="row">
                 <div className=" col-12 rounded-4  py-4 px-4 " style={{backgroundColor:"#0A0C12"}}>
                     <h4 className="fw-medium text-white mb-3">Project Members</h4>
@@ -73,7 +75,7 @@ const Members = () => {
                    
                     <div className="d-flex flex-lg-row flex-column align-items-start justify-content-start gap-2">
                     <div className="col-lg-10 col-12">
-                    <form action="" className="">
+                    <form action="" className="flex-md-nowrap flex-wrap">
                        
                         <div className='d-flex flex-md-nowrap flex-wrap align-items-center gap-3'>
                        
@@ -86,7 +88,7 @@ const Members = () => {
                                 style: {
                                     backgroundColor: "#212121",
                                     color: 'white',
-                                    borderRadius: '16px',
+                                    borderRadius: '10px',
                                     outline: 'none',
                                     boxShadow: 'none',
                                     height: '45px'
@@ -97,6 +99,7 @@ const Members = () => {
                             <FormControl className='rounded-4'  style={{minWidth:"140px" , color:"white", backgroundColor:"#212121"}}>
                                 <InputLabel id="demo-simple-select-label text-white" style={{color:"#2C9BF6"}}>Select</InputLabel>
                                 <Select
+                                style={{backgroundColor:"#212121",color:"#f2f2f2"}}
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
                                 value={role}
@@ -111,8 +114,8 @@ const Members = () => {
                         <Button
                             type="submit"
                             variant="contained"
-                            className="px-5 py-2 text-white"
-                            style={{ backgroundColor: "#2D9BF6" , width:"240px" , textTransform:"capitalize" , borderRadius:"16px" }}
+                            className="px-5  text-white"
+                            style={{ backgroundColor: "#2D9BF6" , width:"240px" , textTransform:"capitalize" , borderRadius:"8px" , padding:"12px 24px" }}
                         > 
                             Send Invitation
                         </Button>
@@ -150,9 +153,12 @@ const Members = () => {
                             styleTableContainer={{
                                 borderRadius: "10px",
                                 backgroundColor: "#090B11",
-                                height:"calc(100vh - 380px)",
                                 display:"flex",
                                 flexDirection:"column",
+                                overflowX:"scroll",
+                                width:"100%",
+                                maxWidth:"100%",
+                               
                             }
                             }
                             th={{

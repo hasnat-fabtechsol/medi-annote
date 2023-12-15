@@ -98,23 +98,7 @@ function SideNav(props) {
           ))}
         </List>
 
-        <List className="mt-auto position-absolute translate-middle" style={{bottom:"0px", right:"5px"}}>
-          <ListItem disablePadding className=" list_text "
-            onClick={() => {
-              // dispatch(logout())
-              navigate('/')
-            }}
-            // onClick={() => setShow(true)}
-            
-          >
-            <ListItemButton className=" list_text ">
-              {/* <ListItemIcon sx={{ color: "white" }} >
-                <LogoutIcon />
-              </ListItemIcon> */}
-              <ListItemText className="d-flex justify-content-center mt-auto" primary={<Typography variant="body2" style={{ fontSize: 14, color: "black", }} title='logout'><LogoutIcon />Logout</Typography>} />
-            </ListItemButton>
-          </ListItem>
-        </List>
+        
       </div>
       {/* {show &&
           <MuiDialog 

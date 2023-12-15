@@ -31,13 +31,13 @@ const DashboardLayout = ({type}) => {
   // return <Navigate to={"/patient/inquiries"}/>
 return (
 
-  <Box  sx={{ display: "flex",backgroundColor:"#EFF3F4" , overflow: "auto" , position:"relative"  }}>
+  <Box  sx={{ display: "flex",backgroundColor:"#181922" , overflow: "auto" , position:"relative"  }}>
   <CssBaseline />
   <div>
   <Header />
   </div>
   
-  <Box className='px-1 px-md-3 pt-5 pb-2 zoom' style={{backgroundColor:"#181922" , height:"100vh" , overflow:"auto" }}
+  <Box className='px-1 px-md-3 pt-5 pb-2 zoom' style={{backgroundColor:"#181922" , height:"100vh"  }}
     component="div"
     sx={{
       flexGrow: 1,

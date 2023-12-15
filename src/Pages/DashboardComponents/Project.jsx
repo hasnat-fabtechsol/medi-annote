@@ -36,7 +36,7 @@ const Project = () => {
                 <div className=" col-12 rounded-4  py-4 px-4 " style={{backgroundColor:"#0A0C12"}}>
                     <h4 className="fw-medium text-white mb-3">Create Project</h4>
                     <div className="">
-                    <p className="text-white mb-0">Give a unique Project name</p>
+                    <p className=" mb-0" style={{color:"#A7AEBF"}}>Give a unique Project name</p>
                     <div className="d-flex flex-lg-row flex-column align-items-start justify-content-start gap-2">
                     <div className="col-lg-8 col-12">
                         <form action="" className="d-flex flex-md-nowrap flex-wrap align-items-center gap-3">
@@ -80,7 +80,7 @@ const Project = () => {
                             styleTableContainer={{
                                 borderRadius: "10px",
                                 backgroundColor: "#090B11",
-                                height:"calc(100vh - 380px)",
+
                                 display:"flex",
                                 flexDirection:"column",
                             }
@@ -96,7 +96,7 @@ const Project = () => {
                             /> */}
 
         <Grid item xs={12} className="mt-3" sx={{ overflowY: "auto" }}>
-                <TableContainer className="d-flex flex-column" component={Paper} style={{backgroundColor:"#090B11" , borderRadius: "10px", height:"calc(100vh - 320px)",}}>
+                <TableContainer className="d-flex flex-column" component={Paper} style={{backgroundColor:"#090B11" , borderRadius: "10px"}}>
                 <Table>
                     <TableHead sx={{ backgroundColor: "#272938", color: "white" }}>
                     <TableRow className="rounded-4">
@@ -113,7 +113,7 @@ const Project = () => {
                     ))}
                     </TableBody>
                 </Table>
-                <div className="mt-auto d-flex justify-content-between px-3 text-white py-3"> 
+                <div className="mt-auto d-flex justify-content-between px-3 text-white paginate-wrapper py-3"> 
             <h6 style={{color: "#2C9BF6"}}><span>7</span> Projects</h6>
             <Pagination count={10} size="small" style={{ color: 'white' }}  />
             </div>

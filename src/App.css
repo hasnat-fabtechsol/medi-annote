@@ -2,7 +2,33 @@ body{background-color:#191624;}
 
 .form-control::placeholder {
     color: #8C8C8C !important;
-  }
+}
+
+.MuiPagination-ul li button,
+.MuiPagination-ul .MuiPaginationItem-root{
+  color: #787A8D !important;
+}
+
+.MuiPagination-ul li button.Mui-selected{
+
+  color: #2C9BF6 !important;
+}
+
+table{
+  margin-bottom: 50px;
+  background-color: #0B121C;
+}
+
+html body table th{
+  font-size: 18px !important;
+}
+
+html body table td{
+  font-size: 16px !important;
+
+}
+
+
   
 
 

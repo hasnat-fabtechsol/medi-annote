@@ -160,7 +160,6 @@ const MemberPerformance = () => {
                             styleTableContainer={{
                                 borderRadius: "10px",
                                 backgroundColor: "#090B11",
-                                height:"calc(100vh - 380px)",
                                 display:"flex",
                                 flexDirection:"column",
                             }
