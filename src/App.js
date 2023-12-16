@@ -18,6 +18,7 @@ import ToolLayout from './AnnotateLayout/ToolLayout';
 import Annotate from './Pages/Annotate';
 import Review from './Pages/Review';
 import WebLayout from './WebPages/LayOut';
+import LabelDataset from './WebPages/LabelDataset';
 
 
 
@@ -56,6 +57,7 @@ function App() {
 
       <Route element={<WebLayout/>}>
         <Route path="/web" element={<Testa/>}/>
+        <Route path="/search" element={<LabelDataset/>}/>
       </Route>
       
     </Routes>

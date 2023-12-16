@@ -97,3 +97,30 @@ input:-moz-placeholder {
 img{
   max-width: 100%;
 }
+
+.img-card{
+  width: 50%;
+  margin: 15px;
+}
+
+.width-wrapper{
+  margin: 0px -15px;
+  width: calc(100% + 30px);
+}
+
+
+
+@media (min-width: 768px) {
+  .img-card{
+    width: calc(33.333333% - 30px);
+  }
+  
+}
+
+/* media css */
+@media (min-width: 1200px) {
+  .img-card{
+    width: calc(20% - 30px);
+  }
+  
+}

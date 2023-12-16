@@ -11,7 +11,7 @@ import {
 
 const WebLayout = () => {
   return (
-    <div className="">
+    <div className="overflow-auto">
      
   <nav className="navbar navbar-expand-lg navbar-light navbg  "  style={{backgroundColor:"#090B11",color:"white",zIndex:"999"}}>
   <div className="container  shrink2 my-2">
@@ -98,7 +98,7 @@ const WebLayout = () => {
   </div>
 </nav>
 
-         <main className='' >
+         <main className='' style={{height:"calc(100vh - 144px)"}} >
                 <div className=''>
                     <Outlet />
                 </div>
@@ -106,7 +106,7 @@ const WebLayout = () => {
 
 
        <footer
-        className=" text-dark  p-2 py-3"
+        className=" text-dark z-3 position-relative  p-2 py-3"
           style={{backgroundColor:"#181922"}}
       >
         <div className="container d-flex justify-content-between align-items-center">
