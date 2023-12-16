@@ -9,6 +9,7 @@ import Header from './Header';
 // import Navbar from './Navbar';
 import SideNav from './SideNav';
 import TopNav from './TopNav';
+import RightNav from './RightNav';
 
 
 
@@ -32,32 +33,39 @@ const ToolLayout = ({type}) => {
   // return <Navigate to={"/patient/inquiries"}/>
 return (
 
-  <Box  sx={{ display: "block",backgroundColor:"#181922"  , position:"relative",height:"100vh"  }}>
+  <Box  sx={{ display: "block",backgroundColor:"#131217"  , position:"relative",height:"100vh"  }}>
   <CssBaseline />
   <div>
   <Header />
   </div>
+  
+
   <div>
   <TopNav />
   </div>
   
-  <Box className='px-1 px-md-3 pt-5 pb-2 zoom' style={{backgroundColor:"#181922"   }}
+  <Box className='ps-2 ps-md-3 pt-2 pb-2 zoom' style={{backgroundColor:"#131217"   }}
     component="div"
     sx={{
-      marginLeft: { md: `auto` },
+      marginLeft: { xs: `auto` },
     
-      width: { md: `calc(100% - ${120}px)` },
+      width: "calc(100% - 100px)" ,
+      paddingRight:{md: `270px`}
     }}
   >
-    <Toolbar variant="dense" />
+    
 
 
 
 
       <Outlet context={{type}}  style={{backgroundColor:"#181922"}}/>
+   
+
+
 
 
       </Box>
+      <RightNav />
       </Box>
 )
 };

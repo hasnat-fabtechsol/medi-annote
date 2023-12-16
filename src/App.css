@@ -94,3 +94,6 @@ input:-moz-placeholder {
 }
 
 /* Add more styles as needed for the separator or any other customization */
+img{
+  max-width: 100%;
+}

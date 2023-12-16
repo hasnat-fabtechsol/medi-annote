@@ -15,6 +15,9 @@ import Dataset from './Pages/DashboardComponents/Dataset';
 import Members from './Pages/DashboardComponents/Members';
 import MemberPerformance from './Pages/DashboardComponents/MemberPerformance';
 import ToolLayout from './AnnotateLayout/ToolLayout';
+import Annotate from './Pages/Annotate';
+import Review from './Pages/Review';
+import WebLayout from './WebPages/LayOut';
 
 
 
@@ -47,6 +50,12 @@ function App() {
 
       <Route element={<ToolLayout/>}>
         <Route path="/tool" element={<Testa/>}/>
+        <Route path="/annotate" element={<Annotate/>}/>
+        <Route path="/review" element={<Review/>}/>
+      </Route>
+
+      <Route element={<WebLayout/>}>
+        <Route path="/web" element={<Testa/>}/>
       </Route>
       
     </Routes>

@@ -34,11 +34,15 @@ import { PiNotebookLight } from "react-icons/pi";
 import { FaGraduationCap } from "react-icons/fa6";
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { RxCursorArrow } from "react-icons/rx";
+import TextField from '@mui/material/TextField';
+import Chip from '@mui/material/Chip';
+import ClearIcon from '@mui/icons-material/Clear';
+import IconButton from '@mui/material/IconButton';
 
 // import { useDispatch } from "react-redux";
 
 
-const drawerWidth = 100;
+const drawerWidth = 270;
 const listItemData = [
   //   { label: "Classes & Students", icon: <svg id="Group_16" data-name="Group 16" xmlns="http://www.w3.org/2000/svg" width="29.35" height="29.35" viewBox="0 0 67.35 67.35">
   //   <path id="Shape" d="M51.564,67.35H15.785A15.8,15.8,0,0,1,0,51.565V15.786A15.8,15.8,0,0,1,15.785,0H51.564A15.8,15.8,0,0,1,67.35,15.786V51.565A15.8,15.8,0,0,1,51.564,67.35ZM15.785,5.261A10.537,10.537,0,0,0,5.261,15.786V51.565A10.537,10.537,0,0,0,15.785,62.089H51.564A10.537,10.537,0,0,0,62.089,51.565V15.786A10.537,10.537,0,0,0,51.564,5.261ZM52.748,56.825H46.961a2.63,2.63,0,1,1,0-5.261h5.787a2.63,2.63,0,1,1,0,5.261ZM49.2,46.569H27.229a2.632,2.632,0,0,1,0-5.264H49.2a2.632,2.632,0,0,1,0,5.264ZM25.123,15.916H14.075a2.63,2.63,0,1,1,0-5.261H25.123a2.63,2.63,0,1,1,0,5.261Z" transform="translate(0 0)" fill="#cf242a"/>
@@ -46,15 +50,25 @@ const listItemData = [
   // </svg>
   //  },
   {
-    
+    label : "Anotations",
     link: `/`,
-    icon: <RxCursorArrow style={{fontSize:"24px"}}/>
+   
   },
   
   {
-
+    label : "Enlarged Heart",
     link: "/",
-    icon: <PiNotebookLight style={{fontSize:"24px"}}/>
+   
+  },
+  {
+    label : "Lung",
+    link: "/",
+    
+  },
+  {
+    label : "Lung",
+    link: "/",
+    
   },
  
   
@@ -66,14 +80,29 @@ const listItemData = [
 
 
 
-function SideNav(props) {
+
+
+function RightNav(props) {
   const [show, setShow] = useState(false)
   const { window } = props;
   const navigate = useNavigate();
+  const [tagList, setTagList] = useState([ 'React', 'Material UI' ]);
+  const [newTag, setNewTag] = useState('');
+  const handleAddTag = () => {
+    if (newTag.trim() !== '') {
+      setTagList((prevTags) => [...prevTags, newTag.trim()]);
+      setNewTag('');
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove) => {
+    setTagList((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
+  };
+
   // const dispatch = useDispatch()
   const drawer = (
-    <div className="" style={{ backgroundColor: "#181922", height: "100vh" }}>
-      <div className="zoom">
+    <div className="px-3 d-flex justify-content-center text-center" style={{ backgroundColor: "#181922", height: "100vh" }}>
+      <div className="zoom w-100">
 
 
         <div className=" py-2" >
@@ -84,8 +113,21 @@ function SideNav(props) {
           
         </div>
         
+        <Button className="px-3 py-3 rounded-3" sx={{
+            color:"#F68D2C" ,
+            marginTop:"50px",
+            textTransform:"capitalize",
+            backgroundColor:"#14151E"
+        }}>
+            <span className="me-2"><svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.1088 3.54289L14.0158 1.42714C13.1096 0.516756 11.879 0.00344531 10.5945 0H4.81253C2.15586 0.00291211 0.00291211 2.15582 0 4.81249V16.1875C0.00291211 18.8442 2.15586 20.9971 4.81253 21H12.6875C15.3442 20.9971 17.4971 18.8442 17.5 16.1875V6.92737C17.5033 5.65938 17.0029 4.44195 16.1088 3.54289ZM14.875 16.1875C14.875 17.3956 13.8956 18.375 12.6875 18.375H4.81253C3.60441 18.375 2.62504 17.3956 2.62504 16.1875V4.81249C2.625 3.60437 3.60441 2.625 4.81253 2.625H9.62501V4.81249C9.62501 5.77898 10.4085 6.42017 11.375 6.42017H14.875L14.875 16.1875Z" fill="#F68D2C"/>
+</svg>
+</span>
+            Send to Review
+        </Button>
+        
 
-        <List className="pt-5">
+        <List className="pt-5 pb-5">
           {listItemData.map((value, i) => (
             <div key={i}>
               <div className=" my-0 m-2 " >
@@ -94,6 +136,77 @@ function SideNav(props) {
             </div>
           ))}
         </List>
+
+        <Box sx={{backgroundColor:"#090B11" , padding:"0px 0px 10px" , borderRadius:"10px"}}>
+            <form >
+            <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              maxWidth: '300px',
+              margin: 'auto',
+              border: '1px solid #2C9BF6',
+              borderRadius: '10px',
+              padding:"5px",
+              overflow: 'hidden',
+            }}
+          >
+            <TextField
+              label="Type a Tag"
+              variant="outlined"
+              name="tag"
+              style={{
+                flex: 1, // Make the input take up remaining space
+                border: 'none', // Remove border for the text field
+              }}
+              InputProps={{
+                style: {
+                  border: 'none', // Remove inner border
+                },
+              }}
+              InputLabelProps={{
+                style: {
+                  color: '#fff', // Placeholder color
+                },
+              }}
+              margin="0"
+            />
+            <Button type="submit" variant="contained" color="primary" sx={{borderRadius:"10px" , textTransform:"capitalize"}}>
+              Enter
+            </Button>
+          </Box>
+            </form>
+
+           {/* Wrapper 1: Heading and Clear Label */}
+      <Box sx={{display:"flex" , justifyContent:"space-between" , margin:"5px 10px", borderBottom:"1px solid #2C9BF6"}}>
+        <Typography variant="h6">Tags</Typography>
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => setTagList([])}
+          sx={{ border: "none" , color: "#2C9BF6" , textTransform:"capitalize" , "&:hover": { border: "none" }}}
+        >
+          Clear
+        </Button>
+      </Box>  
+
+       {/* Display Tags with Delete Buttons */}
+      <Box sx={{ marginTop: '16px', display: 'flex', flexWrap: 'wrap' ,margin:"5px 10px 20px" }}>
+        {tagList.map((tag) => (
+          <Chip
+            key={tag}
+            label={tag}
+            onDelete={() => handleRemoveTag(tag)}
+          
+            variant="outlined"
+            sx={{ margin: '4px' , backgroundColor:"#2C9BF6" , color : "white" }}
+            deleteIcon={<IconButton size="small" edge="end"><ClearIcon sx={{color:"#fff"}} /></IconButton>}
+          />
+        ))}
+      </Box>   
+
+
+        </Box>
 
         
       </div>
@@ -138,7 +251,7 @@ function SideNav(props) {
       sx={{
         width: { md: drawerWidth },
         flexShrink: { md: 0 },
-        bgcolor: "black",
+        bgcolor: "#181922",
       }}
       aria-label="mailbox folders"
     >
@@ -146,19 +259,23 @@ function SideNav(props) {
       <Drawer
         container={container}
         variant="temporary"
-        // open={props.mobileOpen}
-        // onClose={props.handleDrawerToggle}
+        open={props.mobileOpen}
+        onClose={props.handleDrawerToggle}
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
+
         }}
+        anchor="right"
         sx={{
           display: { xs: "block", md: "none" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
-            bgcolor: "#272938",
+            bgcolor: "#181922",
             color: "#AFB7BE",
             zIndex: { md: 1400, xs: 1400 },
+           
+            
           },
         }}
       >
@@ -168,13 +285,15 @@ function SideNav(props) {
 
         variant="permanent"
         sx={{
-          display: { xs: "block", md: "block" },
+          display: { xs: "none", md: "block" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
-            bgcolor: "#272938",
+            bgcolor: "#181922",
             color: "#AFB7BE",
             width: drawerWidth,
             zIndex: { md: 1100, xs: 1200 },
+            right: "0px",
+            left: "auto"
           },
         }}
         open
@@ -187,11 +306,11 @@ function SideNav(props) {
 }
 
 
-SideNav.propTypes = {
+RightNav.propTypes = {
   window: PropTypes.func,
 };
 
-export default SideNav;
+export default RightNav;
 
 
 
@@ -204,17 +323,18 @@ const RenderItem = ({ value, i }) => {
       disablePadding
       sx={listItemStyle}
       
+      
     >
       <ListItemButton
-        className="list-item list_text p-2 "
-       
+        className="list-item list_text p-0 "
+        sx={{ ...buttonStyle, "&:hover": { backgroundColor: "" } }}
       >
-        <ListItemIcon className="myIconClass justify-content-center align-items-center" sx={{ color: "#A7AEBF", marginRight: -3 }} style={{ width: "50px" , height:"50px" , backgroundColor: "#15161F"}}> {value.icon}</ListItemIcon>
-        <ListItemText className="" primary={<Typography variant="body1" style={{ fontSize: 16, color: "#A7AEBF", paddingLeft: 0 }} title={value.label}>{value.label}</Typography>} />
+        
+        <ListItemText className="w-100 text-capitalize" primary={<Button variant="body1" style={{width:"100%" ,fontSize: 16, color: "#2C9BF6" ,  backgroundColor: "#14151E" , textTransform:"capitalize", borderRadius:"10px"  }} title={value.label}>{value.label}</Button>} />
       </ListItemButton>
     </ListItem> :
 
-      <ListItemButton className="list-item list_text no_link_list_item p-2"
+      <ListItemButton className="list-item list_text no_link_list_item p-0"
         sx={{ ...buttonStyle, "&:hover": { backgroundColor: "" } }}
       >
         <ListItemIcon className="myIconClass p-2 rounded-2" sx={{ color: "#A7AEBF", padding:"8px" , borderRadius:"8px" }}>{value.icon}</ListItemIcon>

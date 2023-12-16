@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import SideNav from './SideNav';
+import RightNav from './RightNav';
 function Header(props) {
  const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -14,7 +15,9 @@ function Header(props) {
     return (
         <div className='navigation'>
             <Navbar handleDrawerToggle={handleDrawerToggle} />
-            <SideNav mobileOpen={mobileOpen} handleDrawerToggle={() => handleDrawerToggle()} />
+            <RightNav mobileOpen={mobileOpen} handleDrawerToggle={() => handleDrawerToggle()}/>
+           
+            <SideNav  />
 
         </div>
 
