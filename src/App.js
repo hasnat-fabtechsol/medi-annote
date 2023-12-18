@@ -44,7 +44,7 @@ function App() {
       
       <Route element={<DashboardLayout/>}>
         <Route path="/project" element={<Project />}/>
-        <Route path="/dataset" element={<Dataset />}/>
+        <Route path="/dataset/:id" element={<Dataset />}/>
         <Route path="/members" element={<Members />}/>
         <Route path="/memberperformance" element={<MemberPerformance />}/>
       </Route>

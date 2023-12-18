@@ -78,7 +78,7 @@ export default function TableMui({
     </Table>
     <div className="mt-auto d-flex justify-content-between px-3 text-white py-3"> 
     <h6 style={{color: "#2C9BF6"}}><span>7</span> Projects</h6>
-    <Pagination count={10} size="small" style={{ color: 'white' }}  />
+    <Pagination count={5} size="small" style={{ color: 'white' }}  />
     </div>
     
   </TableContainer>

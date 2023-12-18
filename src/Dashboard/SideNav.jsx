@@ -7,32 +7,19 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import { NavLink, useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Button from '@mui/material/Button';
-import { FaUserCircle, FaShoppingBag, FaUserCheck, FaCog } from "react-icons/fa";
 import { BsStopwatchFill } from "react-icons/bs";
 import Typography from "@mui/material/Typography";
-import { Divider } from "@mui/material";
 // import { useDispatch } from "react-redux";
 // import { logout } from '../../redux/counterSlice'
 import { buttonStyle, listItemStyle } from "./SideNavStyles";
 import { PermIdentity, Settings } from "@mui/icons-material";
-import FolderSharedIcon from '@mui/icons-material/FolderShared';
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
-import InventoryIcon from '@mui/icons-material/Inventory';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import ChatIcon from '@mui/icons-material/Chat';
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 // import { logout } from "../redux/authSlice";
-import { Link } from "react-router-dom";
-import { RxDashboard } from "react-icons/rx";
-import { PiNotebookLight } from "react-icons/pi";
-import { FaGraduationCap } from "react-icons/fa6";
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
+import { GrDocumentPerformance } from "react-icons/gr";
 
 // import { useDispatch } from "react-redux";
 
@@ -46,19 +33,19 @@ const listItemData = [
   //  },
   {
     label: "Project",
-    link: `/`,
+    link: `/project`,
     icon: <ShareOutlinedIcon style={{fontSize:"20px"}} />
   },
   
   {
     label: "Members",
-    link: "/",
-    icon: <PiNotebookLight style={{fontSize:"20px"}}/>
+    link: "/members",
+    icon: <i class="bi bi-people-fill" style={{fontSize:"20px"}}></i>
   },
   {
     label: "Members Performance",
-    link: "/",
-    icon: <PiNotebookLight style={{fontSize:"20px"}}/>
+    link: "/memberperformance",
+    icon: <GrDocumentPerformance style={{fontSize:"20px"}} />
   },
   
   

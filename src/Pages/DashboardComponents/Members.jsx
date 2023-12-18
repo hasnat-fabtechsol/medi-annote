@@ -68,127 +68,108 @@ const Members = () => {
     return (
         <div className="">
             <div className="container  ">
-            <div className="  rounded-4  py-4 px-4 " style={{backgroundColor:"#0A0C12"}}>
+                <div className="  rounded-4  py-4 px-4 " style={{backgroundColor:"#0A0C12"}}>
                     <h4 className="fw-medium text-white mb-3">Project Members</h4>
                     <div className="">
-                   
-                    <div className="d-flex flex-lg-row flex-column align-items-start justify-content-start gap-2">
-                    <div className="col-lg-10 col-12">
-                    <form action="" className="flex-md-nowrap flex-wrap">
-                       
-                        <div className='d-flex flex-md-nowrap flex-wrap align-items-center gap-3'>
-                       
-                            <TextField
-                                type="email"
-                                variant="outlined"
-                                className="w-75"
-                                placeholder="Type Here"
-                                InputProps={{
-                                style: {
-                                    backgroundColor: "#212121",
-                                    color: 'white',
-                                    borderRadius: '10px',
-                                    outline: 'none',
-                                    boxShadow: 'none',
-                                    height: '45px'
-                                }
-                                }}
-                              
-                            />
-                            <FormControl className='rounded-4'  style={{minWidth:"140px" , color:"white", backgroundColor:"#212121"}}>
-                                <InputLabel id="demo-simple-select-label text-white" style={{color:"#2C9BF6"}}>Select</InputLabel>
-                                <Select
-                                style={{backgroundColor:"#212121",color:"#f2f2f2"}}
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={role}
-                                label="Select"
-                                onChange={handleChange}
-                                >
-                                <MenuItem value={10}>Annotator</MenuItem>
-                                <MenuItem value={20}>Review</MenuItem>
-                                <MenuItem value={30}>Admin</MenuItem>
-                                </Select>
-                            </FormControl>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            className="px-5  text-white"
-                            style={{ backgroundColor: "#2D9BF6" , width:"240px" , textTransform:"capitalize" , borderRadius:"8px" , padding:"12px 24px" }}
-                        > 
-                            Send Invitation
-                        </Button>
+                        <div className="d-flex flex-lg-row flex-column align-items-start justify-content-start gap-2">
+                            <div className="col-lg-10 col-12">
+                                <form action="" className="flex-md-nowrap flex-wrap">
+                                
+                                    <div className='d-flex flex-md-nowrap flex-wrap align-items-center gap-3'>
+                                
+                                        <TextField
+                                            type="email"
+                                            variant="outlined"
+                                            className="w-75"
+                                            placeholder="Type Here"
+                                            InputProps={{
+                                            style: {
+                                                backgroundColor: "#212121",
+                                                color: 'white',
+                                                borderRadius: '10px',
+                                                outline: 'none',
+                                                boxShadow: 'none',
+                                                height: '45px'
+                                            }
+                                            }}
+                                        
+                                        />
+                                        <FormControl className='rounded-4'  style={{minWidth:"140px" , color:"white", backgroundColor:"#212121"}}>
+                                            <InputLabel id="demo-simple-select-label text-white" style={{color:"#2C9BF6"}}>Select</InputLabel>
+                                            <Select
+                                            style={{backgroundColor:"#212121",color:"#f2f2f2"}}
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={role}
+                                            label="Select"
+                                            onChange={handleChange}
+                                            >
+                                            <MenuItem value={10}>Annotator</MenuItem>
+                                            <MenuItem value={20}>Review</MenuItem>
+                                            <MenuItem value={30}>Admin</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    <Button
+                                        type="submit"
+                                        variant="contained"
+                                        className="px-5  text-white"
+                                        style={{ backgroundColor: "#2D9BF6" , width:"240px" , textTransform:"capitalize" , borderRadius:"8px" , padding:"12px 24px" }}
+                                    > 
+                                        Send Invitation
+                                    </Button>
 
-                        </div>
+                                    </div>
 
 
-                       
+                                
 
-      
-                    </form>
-                    
-                    
-                    </div>
-                    
-                    </div>
-                </div>
-                </div>
                 
-
+                                </form>                   
+                            </div>     
+                        </div>
+                    </div>
+                </div>
                 <div className=" h-100 py-y mb-4 px-0" >
                     <div className="row">
-                    <div className="col-lg-12 h-100 col-md-12 col-12 ">
-                        <div className="mt-3 h-100 ">
-                            {/* TableMui */}
-                            <div className='w-100 '>
-                            <TableMui
-                            styleTableThead={{
-                                "& th": {
-                                color: "white",
-                                backgroundColor: "#272938",
-                                fontWeight: "500",
-                                whiteSpace: "nowrap",
-                                borderColor: "#090B11",
-                                },
-                            }}
-                            styleTableContainer={{
-                                borderRadius: "10px",
-                                backgroundColor: "#090B11",
-                                display:"flex",
-                                flexDirection:"column",
-                                overflowX:"scroll",
-                                width:"100%",
-                                maxWidth:"100%",
-                               
-                            }
-                            }
-                            th={{
-                                name: "Username ",
-                                email:"Email",
-                                Role:"Role",
-                                action:"Action"
-                            }}
+                        <div className="col-lg-12 h-100 col-md-12 col-12 ">
+                            <div className="mt-3 h-100 ">
+                                {/* TableMui */}
+                                <div className='w-100 '>
+                                <TableMui
+                                styleTableThead={{
+                                    "& th": {
+                                    color: "white",
+                                    backgroundColor: "#272938",
+                                    fontWeight: "500",
+                                    whiteSpace: "nowrap",
+                                    borderColor: "#090B11",
+                                    },
+                                }}
+                                styleTableContainer={{
+                                    borderRadius: "10px",
+                                    backgroundColor: "#090B11",
+                                    display:"flex",
+                                    flexDirection:"column",
+                                    width:"100%",
+                                    maxWidth:"100%",
+                                    
+                                }
+                                }
+                                th={{
+                                    name: "Username ",
+                                    email:"Email",
+                                    Role:"Role",
+                                    action:"Action"
+                                }}
 
-                            //   columns={columns}
-                            td={Data}
-                            />
-                            </div>
-
-        
-
-                        
-
+                                //   columns={columns}
+                                td={Data}
+                                />
+                                </div>
+                            </div>  
                         </div>
-                    
-                    
-                    
-                    </div>
-                    </div>
-                   
-                </div>
-                
-                
-                
+                    </div> 
+                </div>   
             </div>   
         </div>
     );
