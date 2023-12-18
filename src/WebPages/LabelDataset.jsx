@@ -37,7 +37,7 @@ const LabelDataset = () => (
             </div>
             <div className="search-results mt-4 rounded-4 overflow-hidden" style={{backgroundColor:"#090B11"}}>
                 <div className="head py-3 px-4" style={{backgroundColor:"#272938"}}>
-                    <h5 className="text-white">Search Result</h5>
+                    <h5 className="text-white m-0">Search Result</h5>
                 </div>
                 <div className="search-body rounded-bottom-4  px-4 pt-4 pb-5 overflow-auto" style={{maxHeight:"400px"}}>
                     <div className=" width-wrapper d-flex flex-wrap" >

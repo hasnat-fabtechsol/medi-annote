@@ -10,6 +10,7 @@ import Header from './Header';
 import SideNav from './SideNav';
 import TopNav from './TopNav';
 import RightNav from './RightNav';
+import Footer from '../component/Footer';
 
 
 
@@ -61,11 +62,14 @@ return (
       <Outlet context={{type}}  style={{backgroundColor:"#181922"}}/>
    
 
-
+     
 
 
       </Box>
       <RightNav />
+      <div style={{position:"fixed" , bottom:"0" , left:"0" , right : "0" , zIndex:"1600"}}>
+      <Footer />
+      </div>
       </Box>
 )
 };

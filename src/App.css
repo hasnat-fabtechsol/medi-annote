@@ -99,7 +99,7 @@ img{
 }
 
 .img-card{
-  width: 50%;
+  width: calc(50% - 30px);
   margin: 15px;
 }
 
