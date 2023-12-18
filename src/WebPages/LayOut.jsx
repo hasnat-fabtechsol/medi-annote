@@ -106,10 +106,10 @@ const WebLayout = () => {
 
 
        <footer
-        className=" text-dark z-3 position-fixed left-0 right-0 bottom-0 flex-wrap  p-2 py-3"
+        className=" text-dark  w-100 z-3 position-fixed left-0 right-0 bottom-0 flex-wrap  p-2 py-3"
           style={{backgroundColor:"#181922"}}
       >
-        <div className="container d-flex justify-content-between align-items-center">
+        <div className="container d-flex flex-wrap justify-content-between align-items-center">
  
             <div>
                 <Link style={{fontSize:"25px"}} className=" ms-2 text-white fs-bold text-decoration-none" to="/">

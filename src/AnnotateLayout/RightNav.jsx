@@ -207,7 +207,7 @@ function RightNav(props) {
             onDelete={() => handleRemoveTag(tag)}
           
             variant="outlined"
-            sx={{ margin: '4px' , backgroundColor:"#2C9BF6" , color : "white" }}
+            sx={{ margin: '4px' , backgroundColor:"#2C9BF6" , color : "white" , border:"none" }}
             deleteIcon={<IconButton size="small" edge="end"><ClearIcon sx={{color:"#fff"}} /></IconButton>}
           />
         ))}
