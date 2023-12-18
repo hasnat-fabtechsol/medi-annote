@@ -108,6 +108,20 @@ img{
   width: calc(100% + 30px);
 }
 
+.MuiDrawer-root  .MuiListItem-root.active p{
+  color: #2C9BF6 !important;
+}
+
+.MuiDrawer-root  .MuiListItem-root.active{
+  background-color: #272938;
+}
+
+  
+.MuiDrawer-root  .MuiListItem-root.active .myIconClass{
+  color: #2C9BF6 !important;    
+
+}
+
 
 
 @media (min-width: 768px) {

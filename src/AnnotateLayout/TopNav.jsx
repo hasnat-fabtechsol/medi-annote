@@ -19,10 +19,10 @@ import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
 
 const TopNav = () => (
     <>
-   <AppBar position="" sx={{paddingTop:"80px" , backgroundColor:"transparent" , width:{md: `calc(100% - 100px)`} , boxShadow:"none" , margin:"auto" , paddingRight:{md : `200px`}}}>
+   <AppBar position="" sx={{paddingTop:"80px" , backgroundColor:"transparent" , width:{md: `calc(100% - 0px)`} , boxShadow:"none" , margin:"auto" , paddingRight:{md : `270px`} , marginRight:"0px" , paddingLeft:"100px" }}>
     <Toolbar variant="dense" sx={{justifyContent:"space-between" , padding:"5px 0px"}}>
-    <Container maxWidth="lg">
-        <Box sx={{ display:"flex" , justifyContent:"space-between" , alignItems:"center"}}>
+    <div className="container">
+        <Box sx={{ display:"flex" , justifyContent:"space-between" , alignItems:"center" , overflowX:"auto"}}>
             <Box sx={{ display:"flex"  , alignItems:"center" }}>
                 <IconButton>
                 <ArrowBackIcon sx={{ fontSize: 32 , color:"#A7AEBF" ,padding:"5px" , backgroundColor:"#14151D"  }} />
@@ -51,7 +51,7 @@ const TopNav = () => (
          
             </Box>
         </Box>
-    </Container>
+    </div>
 
     
 </Toolbar>

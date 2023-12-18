@@ -42,7 +42,7 @@ return (
     sx={{
       marginLeft: { md: `auto` },
     
-      width: { md: `calc(100% - ${220}px)` },
+      width: { md: `calc(100% - ${230}px)` },
     }}
   >
     <Toolbar variant="dense" />

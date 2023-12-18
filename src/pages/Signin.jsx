@@ -54,11 +54,9 @@ export default function Signin() {
 
 
 <div className="row">
-
-  <button  type="submit" class="btn text-light btn-primary text-center px-5 mb-2  mx-auto">Sign in</button>
-  
+  <Link type='submit' to={"/project"} class="btn text-light btn-primary text-center px-5 mb-2  mx-auto" >Sign in</Link>
   <div className="text-center mb-5  ">
-  <p style={{fontSize:"10px"}}>Have some problems? <Link  >Go back to Sign up </Link>   </p>
+  <p style={{fontSize:"10px"}}>Have some problems? <Link to={"/"}  >Go back to Sign up </Link>   </p>
   </div>
 </div>
         </div>

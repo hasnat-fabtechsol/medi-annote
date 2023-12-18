@@ -53,8 +53,8 @@ export const Signup = () => {
   </div>
   <div className="text-center mb-5 mt-3 ">
 <Link to={"/email-confirmation"}>
-
-  <button type="submit" class="btn btn-primary text-center px-5  mb-4 mx-auto">Sign up</button>
+  <Link to={"/sign-in"} className="btn btn-primary text-center px-5  mb-4 mx-auto"> Sign up </Link>
+ 
 </Link>
   <p>Already a member? <Link to={"/sign-in"}  >Sign in </Link> </p>
   </div>
