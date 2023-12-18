@@ -8,6 +8,7 @@ import { Outlet, Link, useNavigate, Navigate } from "react-router-dom";
 import Header from './Header';
 // import Navbar from './Navbar';
 import SideNav from './SideNav';
+import CopyRight from '../component/CopyRight';
 
 
 
@@ -51,6 +52,7 @@ return (
 
 
       <Outlet context={{type}}  style={{backgroundColor:"#181922"}}/>
+      <CopyRight/>
 
 
       </Box>

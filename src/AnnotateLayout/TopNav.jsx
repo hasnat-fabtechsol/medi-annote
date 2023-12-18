@@ -42,11 +42,11 @@ const TopNav = () => (
                 </IconButton>
             </Box>
             <Box>
-                <p className="m-0 py-2 px-3 rounded-3" style={{backgroundColor:"#14151D"}}><span style={{color:"#2C9BF6"}} >01 </span> / <span>23</span></p>
+                <p className="m-0 py-2 px-3 d-flex rounded-3" style={{backgroundColor:"#14151D"}}><span style={{color:"#2C9BF6"}} >01 </span> / <span>23</span></p>
             </Box>    
 
             <Box sx={{ display:"flex" , gap:"5px" , alignItems:"center" }}>
-            <p className="m-0 py-2 px-3 rounded-3" style={{backgroundColor:"#14151D"}}><span style={{color:"#2C9BF6"}} >01 </span> : <span>23</span></p>
+            <p className="m-0 py-2 d-flex px-3 rounded-3" style={{backgroundColor:"#14151D"}}><span style={{color:"#2C9BF6"}} >01 </span> : <span>23</span></p>
             <Avatar alt="Remy Sharp" src={require('../assets/avatar.png')} />
             <IoIosArrowForward style={{ fontSize: 28 , color:"#2C9BF6"   }} />
             <TaskOutlinedIcon sx={{ fontSize: 36 , color:"#2C9BF6"  , }}/>

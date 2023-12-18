@@ -83,6 +83,23 @@ import { NavLink} from "react-router-dom";
    
         </li>
         <li className="nav-item  dropdown">
+          <Hidden smDown>
+        
+          <NavLink
+            className=" text-light btn rounded-3 "
+            exact
+            activeClassName="active"
+            to="/sign-in"
+            title="Faq"
+            style={{ fontSize: '16px', padding:"7px 34px ", maxWidth:"fit-content",marginInline:"5px" , backgroundColor:"transparent"}}
+           
+          >
+            Log in
+          </NavLink>
+          </Hidden>
+
+        </li>
+        <li className="nav-item  dropdown">
         
           <NavLink
             className=" text-light btn rounded-3 "
@@ -93,7 +110,7 @@ import { NavLink} from "react-router-dom";
             style={{ fontSize: '16px', padding:"7px 34px ", maxWidth:"fit-content",marginInline:"5px" , backgroundColor:"#2C9BF6"}}
            
           >
-            Log in
+            Sign Up
           </NavLink>
 
         </li>

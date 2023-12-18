@@ -38,6 +38,8 @@ import TextField from '@mui/material/TextField';
 import Chip from '@mui/material/Chip';
 import ClearIcon from '@mui/icons-material/Clear';
 import IconButton from '@mui/material/IconButton';
+import { useLocation } from "react-router-dom";
+import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 
 // import { useDispatch } from "react-redux";
 
@@ -83,6 +85,7 @@ const listItemData = [
 
 
 function RightNav(props) {
+  const location = useLocation();
   const [show, setShow] = useState(false)
   const { window } = props;
   const navigate = useNavigate();
@@ -112,19 +115,42 @@ function RightNav(props) {
           </div>
           
         </div>
-        
-        <Button className="px-3 py-3 rounded-3" sx={{
-            color:"#F68D2C" ,
-            marginTop:"50px",
-            textTransform:"capitalize",
-            backgroundColor:"#14151E"
-        }}>
-            <span className="me-2"><svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M16.1088 3.54289L14.0158 1.42714C13.1096 0.516756 11.879 0.00344531 10.5945 0H4.81253C2.15586 0.00291211 0.00291211 2.15582 0 4.81249V16.1875C0.00291211 18.8442 2.15586 20.9971 4.81253 21H12.6875C15.3442 20.9971 17.4971 18.8442 17.5 16.1875V6.92737C17.5033 5.65938 17.0029 4.44195 16.1088 3.54289ZM14.875 16.1875C14.875 17.3956 13.8956 18.375 12.6875 18.375H4.81253C3.60441 18.375 2.62504 17.3956 2.62504 16.1875V4.81249C2.625 3.60437 3.60441 2.625 4.81253 2.625H9.62501V4.81249C9.62501 5.77898 10.4085 6.42017 11.375 6.42017H14.875L14.875 16.1875Z" fill="#F68D2C"/>
-</svg>
-</span>
-            Send to Review
+
+        {location.pathname === "/annotate" ? (
+        <Button
+          className="px-3 py-3 rounded-3"
+          sx={{
+            color: "#F68D2C",
+            marginTop: "50px",
+            textTransform: "capitalize",
+            backgroundColor: "#14151E",
+          }}
+        >
+          <span className="me-2">
+            <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.1088 3.54289L14.0158 1.42714C13.1096 0.516756 11.879 0.00344531 10.5945 0H4.81253C2.15586 0.00291211 0.00291211 2.15582 0 4.81249V16.1875C0.00291211 18.8442 2.15586 20.9971 4.81253 21H12.6875C15.3442 20.9971 17.4971 18.8442 17.5 16.1875V6.92737C17.5033 5.65938 17.0029 4.44195 16.1088 3.54289ZM14.875 16.1875C14.875 17.3956 13.8956 18.375 12.6875 18.375H4.81253C3.60441 18.375 2.62504 17.3956 2.62504 16.1875V4.81249C2.625 3.60437 3.60441 2.625 4.81253 2.625H9.62501V4.81249C9.62501 5.77898 10.4085 6.42017 11.375 6.42017H14.875L14.875 16.1875Z" fill="#F68D2C"/>
+            </svg>
+          </span>
+          Send to Review
         </Button>
+      ) : (
+        <Link to="/review">
+          <Button
+            className="px-4 py-3 rounded-3"
+            sx={{
+              color: "#00AD26",
+              marginTop: "50px",
+              textTransform: "capitalize",
+              backgroundColor: "#14151E",
+            }}
+            startIcon = {<CheckCircleOutlineRoundedIcon />}
+          >
+            Review
+          </Button>
+        </Link>
+      )}
+        
+        
         
 
         <List className="pt-5 pb-5">
@@ -149,29 +175,11 @@ function RightNav(props) {
               borderRadius: '10px',
               padding:"5px",
               overflow: 'hidden',
+              backgroundColor:"#212121"
             }}
           >
-            <TextField
-              label="Type a Tag"
-              variant="outlined"
-              name="tag"
-              style={{
-                flex: 1, // Make the input take up remaining space
-                border: 'none', // Remove border for the text field
-              }}
-              InputProps={{
-                style: {
-                  border: 'none', // Remove inner border
-                },
-              }}
-              InputLabelProps={{
-                style: {
-                  color: '#fff', // Placeholder color
-                },
-              }}
-              margin="0"
-            />
-            <Button type="submit" variant="contained" color="primary" sx={{borderRadius:"10px" , textTransform:"capitalize"}}>
+            <input className="no-focus border-0 w-75 shadow-none" type="text" placeholder="Type a Text" style={{backgroundColor:"#212121"}} />
+            <Button type="submit" variant="contained" color="primary" sx={{borderRadius:"10px" , textTransform:"capitalize" , backgroundColor:"#2C9BF6"}}>
               Enter
             </Button>
           </Box>

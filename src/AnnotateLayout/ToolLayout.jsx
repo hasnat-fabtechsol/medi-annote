@@ -49,8 +49,9 @@ return (
     component="div"
     sx={{
       marginLeft: { xs: `auto` },
+      marginRight: "16px",
     
-      width: "calc(100% - 100px)" ,
+      width: "calc(100% - 116px)" ,
       paddingRight:{md: `270px`}
     }}
   >
@@ -67,7 +68,7 @@ return (
 
       </Box>
       <RightNav />
-      <div style={{position:"fixed" , bottom:"0" , left:"0" , right : "0" , zIndex:"1600"}}>
+      <div style={{position:"fixed" , bottom:"0" , left:"0" , right : "0" , zIndex:"1300"}}>
       <Footer />
       </div>
       </Box>
