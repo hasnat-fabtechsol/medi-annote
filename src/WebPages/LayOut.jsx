@@ -65,7 +65,7 @@ const WebLayout = () => {
             className="nav-link text-light"
             exact
             activeClassName="active"
-            to="/faq"
+            to="/sign-in"
             title="Faq"
             style={{ fontSize: '16px', padding:"9px ", maxWidth:"fit-content",marginInline:"30px"}}
            
@@ -79,7 +79,7 @@ const WebLayout = () => {
             className="nav-link text-light"
             exact
             activeClassName="active"
-            to="/about-us"
+            to="/"
             title="ABout us"
             style={{ fontSize: '16px' , padding:"9px ", maxWidth:"fit-content",marginInline:"30px"}}
            

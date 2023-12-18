@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Footer = () => (
     <>
        <footer
-        className=" text-dark z-3 position-relative  p-1 py-3"
-          style={{backgroundColor:"#181922"}}
+        className=" text-dark position-relative  p-1 py-3"
+          style={{backgroundColor:"#181922" , zIndex:"1400"}}
       >
         <div className="container d-flex flex-wrap justify-content-between align-items-center">
  

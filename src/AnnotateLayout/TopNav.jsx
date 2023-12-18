@@ -15,6 +15,9 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import Container from '@mui/material/Container';
 import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
+import { IoIosArrowBack } from "react-icons/io";
+
+import { IoIosArrowForward } from "react-icons/io";
 
 
 const TopNav = () => (
@@ -25,10 +28,10 @@ const TopNav = () => (
         <Box sx={{ display:"flex" , justifyContent:"space-between" , alignItems:"center" , overflowX:"auto"}}>
             <Box sx={{ display:"flex"  , alignItems:"center" }}>
                 <IconButton>
-                <ArrowBackIcon sx={{ fontSize: 32 , color:"#A7AEBF" ,padding:"5px" , backgroundColor:"#14151D"  }} />
+                <IoIosArrowBack style={{ fontSize: 32 , color:"#A7AEBF" ,padding:"5px" , backgroundColor:"#14151D"  }} />
 
             
-                <ArrowForwardIcon sx={{ fontSize: 32 , color:"#A7AEBF" ,padding:"5px" , backgroundColor:"#14151D"  }} />
+                <IoIosArrowForward style={{ fontSize: 32 , color:"#A7AEBF" ,padding:"5px" , backgroundColor:"#14151D"  }} />
                 </IconButton>
 
                 <IconButton sx={{padding:"5px"}}>
@@ -39,13 +42,15 @@ const TopNav = () => (
                 </IconButton>
             </Box>
             <Box>
-                <p className="m-0 p-2 rounded-3" style={{backgroundColor:"#14151D"}}><span >01</span>/<span>23</span></p>
+                <p className="m-0 py-2 px-3 rounded-3" style={{backgroundColor:"#14151D"}}><span style={{color:"#2C9BF6"}} >01 </span> / <span>23</span></p>
             </Box>    
 
             <Box sx={{ display:"flex" , gap:"5px" , alignItems:"center" }}>
+            <p className="m-0 py-2 px-3 rounded-3" style={{backgroundColor:"#14151D"}}><span style={{color:"#2C9BF6"}} >01 </span> : <span>23</span></p>
             <Avatar alt="Remy Sharp" src={require('../assets/avatar.png')} />
+            <IoIosArrowForward style={{ fontSize: 28 , color:"#2C9BF6"   }} />
             <TaskOutlinedIcon sx={{ fontSize: 36 , color:"#2C9BF6"  , }}/>
-            
+            <IoIosArrowForward style={{ fontSize: 28 , color:"#2C9BF6"   }} />
             <DoneIcon sx={{ fontSize: 36 , color:"#2C9BF6" , backgroundColor:"#181922" , borderRadius:"50%" , border:"1px solid #2C9BF6" , padding:"8px"}}/>  
             <DeleteOutlineOutlinedIcon sx={{ fontSize: 36 , color:"#2C9BF6" , backgroundColor:"#181922" , borderRadius:"50%" , border:"1px solid #2C9BF6" , padding:"8px"}}/> 
          

@@ -122,6 +122,12 @@ img{
 
 }
 
+@media (max-width: 470px){
+  .logo{
+    font-size:18px !important;
+  }
+}
+
 
 
 @media (min-width: 768px) {

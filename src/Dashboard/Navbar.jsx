@@ -39,7 +39,7 @@ import { NavLink} from "react-router-dom";
   <div className="container-fluid flex-nowrap  shrink2 my-2">
    
 
-    <Link style={{fontSize:"25px"}} className=" ms-2 text-white fs-bold text-decoration-none" to="/">
+    <Link style={{fontSize:"25px"}} className=" ms-2 text-white fs-bold text-decoration-none logo" to="/">
     MediAnnote
       {/* <div style={{ width: "10rem" }}>
         <img width="100%"
@@ -83,19 +83,19 @@ import { NavLink} from "react-router-dom";
    
         </li>
         <li className="nav-item  dropdown">
-        <Hidden smDown>
+
           <NavLink
             className=" text-light btn rounded-3 "
             exact
             activeClassName="active"
-            to="/"
+            to="/sign-in"
             title="Faq"
-            style={{ fontSize: '16px', padding:"7px 34px ", maxWidth:"fit-content",marginInline:"30px" , backgroundColor:"#2C9BF6"}}
+            style={{ fontSize: '16px', padding:"7px 34px ", maxWidth:"fit-content",marginInline:"5px" , backgroundColor:"#2C9BF6"}}
            
           >
             Log in
           </NavLink>
-          </Hidden>
+    
         </li>
 
         {/* <li className="nav-item">
