@@ -24,6 +24,7 @@ import {
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Paginate from "../../mui/Paginate";
 
 
 
@@ -132,7 +133,7 @@ const Members = () => {
                 <div className=" h-100 py-y mb-4 px-0" >
                     <div className="row">
                         <div className="col-lg-12 h-100 col-md-12 col-12 ">
-                            <div className="mt-3 h-100 ">
+                            <div className="mt-3 h-100 rounded-4 " style={{backgroundColor:"#090B11"}}>
                                 {/* TableMui */}
                                 <div className='w-100 '>
                                 <TableMui
@@ -165,6 +166,14 @@ const Members = () => {
                                 //   columns={columns}
                                 td={Data}
                                 />
+                                    <div className="mt-auto d-flex gap-3 flex-wrap justify-content-between px-3 text-white py-3"> 
+                                        <div className="d-flex gap-3">
+                                            <button className="btn text-white" style={{backgroundColor:"#2C9BF6"}}>Start Label</button>
+                                            <button className="btn text-white" style={{backgroundColor:"#2C9BF6"}}>Start Review</button>
+                                        </div>  
+                                    <Pagination count={5} size="small" style={{ color: 'white' }}  />
+                                </div>
+                                
                                 </div>
                             </div>  
                         </div>

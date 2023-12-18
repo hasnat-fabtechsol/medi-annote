@@ -145,7 +145,7 @@ const MemberPerformance = () => {
 
                 <div className="d-flex h-100 py-y mb-4 px-0" style={{ overflow: "auto" }}>
                     <div className="col-lg-12 h-100 col-md-12 col-12 ">
-                        <div className="mt-3 h-100">
+                        <div className="mt-3 h-100 rounded-4 overflow-hidden" style={{backgroundColor:"#090B11"}}>
                             {/* TableMui */}
                             <TableMui
                             styleTableThead={{
@@ -158,7 +158,6 @@ const MemberPerformance = () => {
                                 },
                             }}
                             styleTableContainer={{
-                                borderRadius: "10px",
                                 backgroundColor: "#090B11",
                                 display:"flex",
                                 flexDirection:"column",
@@ -179,6 +178,11 @@ const MemberPerformance = () => {
 
 
                             />
+
+                            <div className="mt-auto d-flex justify-content-between px-3 text-white py-3"> 
+                                <h6 style={{color: "#2C9BF6"}}><span>7</span> Projects</h6>
+                                <Pagination count={5} size="small" style={{ color: 'white' }}  />
+                            </div>
 
         
 
