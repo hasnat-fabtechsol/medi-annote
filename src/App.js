@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './component/Layout';
 import Testa from './component/Testa';
-import { Signup } from './Pages/Signup';
+import  Signup from './Pages/Signup';
 import EmailConfirmation from './Pages/EmailConfirmation';
 import Signin from './Pages/Signin';
 import PasswordRecover from './Pages/PasswordRecover';

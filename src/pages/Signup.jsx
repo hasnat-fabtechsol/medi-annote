@@ -2,7 +2,7 @@ import { Box } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const Signup = () => {
+export default  () => {
   return (
     <div className='d-flex justify-content-center align-items-center' style={{height:"100vh"}}>
     <Box className="px-md-5 my-5" sx={{width:{lg:"65%",sm:"90%"},backgroundColor:"black",color:"white",borderRadius:"19px"}}>
