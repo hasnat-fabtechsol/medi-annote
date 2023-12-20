@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './component/Layout';
 import Testa from './component/Testa';
-import  Signup from './Pages/Signup';
 import EmailConfirmation from './Pages/EmailConfirmation';
 import Signin from './Pages/Signin';
+import SignUp from './Pages/Signup';
 import PasswordRecover from './Pages/PasswordRecover';
 import NewPassword from './Pages/NewPassword';
 import Passwordchanged from './Pages/Passwordchanged';
@@ -28,7 +28,7 @@ function App() {
     <>
    <Router>
     <Routes>
-      <Route path="/" element={<Signup/>}/>
+      <Route path="/" element={<SignUp/>}/>
 
       <Route element={<Layout/>}>
 
