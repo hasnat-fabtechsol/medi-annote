@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import { Close } from '@mui/icons-material';
 
-export default function EmailConfirmation() {
+const  EmailConfirmationPage=()=> {
   const [otp, setOtp] = useState('');
   const renderInput = (props, index) => {
     return (
@@ -70,3 +70,4 @@ export default function EmailConfirmation() {
   
   );
 }
+export default  EmailConfirmationPage

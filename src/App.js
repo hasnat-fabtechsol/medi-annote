@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './component/Layout';
 import Testa from './component/Testa';
-import EmailConfirmation from './Pages/EmailConfirmation';
 import Signin from './Pages/Signin';
 import SignUp from './Pages/Signup';
 import PasswordRecover from './Pages/PasswordRecover';
@@ -19,6 +18,7 @@ import Annotate from './Pages/Annotate';
 import Review from './Pages/Review';
 import WebLayout from './WebPages/LayOut';
 import LabelDataset from './WebPages/LabelDataset';
+import EmailConfirmationPage from './Pages/EmailConfirmation';
 
 
 
@@ -32,7 +32,7 @@ function App() {
 
       <Route element={<Layout/>}>
 
-      <Route path="/email-confirmation" element={<EmailConfirmation/>}/>
+      <Route path="/email-confirmation" element={<EmailConfirmationPage/>}/>
       <Route path="/sign-in" element={<Signin/>}/>
       <Route path="/password-recover" element={<PasswordRecover/>}/>
       <Route path="/new-password" element={<NewPassword/>}/>
