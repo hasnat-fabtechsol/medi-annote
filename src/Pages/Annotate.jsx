@@ -3,13 +3,14 @@ import { fabric } from "fabric";
 import Lung from "../assets/lung.png";
 
 const Annotate = () => {
+  
   const canvasRef = useRef(null);
   const [canvas, setCanvas] = useState(null);
 
   useEffect(() => {
     const newCanvas = new fabric.Canvas(canvasRef.current, {
-      height: 500,
-      width: 700,
+      height: 400,
+      width: 1299 / 3,
       backgroundColor: "#fff",
       selection: false,
       preserveObjectStacking: true,
@@ -69,7 +70,7 @@ const Annotate = () => {
 
   return (
     <>
-      <div className="p-2 rounded-4" style={{ backgroundColor: "#181922" }}>
+      <div className="p-2 rounded-4 overflow-hidden" style={{ backgroundColor: "#181922" }}>
         <div
           className="vh-75 d-flex justify-content-center align-items-center"
           id="canvasContainer"
