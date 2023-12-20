@@ -3,22 +3,22 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Layout from './component/Layout';
 import Testa from './component/Testa';
-import Signin from './Pages/Signin';
-import SignUp from './Pages/Signup';
-import PasswordRecover from './Pages/PasswordRecover';
-import NewPassword from './Pages/NewPassword';
-import Passwordchanged from './Pages/Passwordchanged';
+import Signin from './app-pages/Signin';
+import SignUp from './app-pages/Signup';
+import PasswordRecover from './app-pages/PasswordRecover';
+import NewPassword from './app-pages/NewPassword';
+import Passwordchanged from './app-pages/Passwordchanged';
 import DashboardLayout from './Dashboard/DashboardLayout' ;
-import Project from './Pages/DashboardComponents/Project';
-import Dataset from './Pages/DashboardComponents/Dataset';
-import Members from './Pages/DashboardComponents/Members';
-import MemberPerformance from './Pages/DashboardComponents/MemberPerformance';
+import Project from './app-pages/DashboardComponents/Project';
+import Dataset from './app-pages/DashboardComponents/Dataset';
+import Members from './app-pages/DashboardComponents/Members';
+import MemberPerformance from './app-pages/DashboardComponents/MemberPerformance';
 import ToolLayout from './AnnotateLayout/ToolLayout';
-import Annotate from './Pages/Annotate';
-import Review from './Pages/Review';
+import Annotate from './app-pages/Annotate';
+import Review from './app-pages/Review';
 import WebLayout from './WebPages/LayOut';
 import LabelDataset from './WebPages/LabelDataset';
-import EmailConfirmationPage from './Pages/EmailConfirmation';
+import EmailConfirmationPage from './app-pages/EmailConfirmation';
 
 
 
