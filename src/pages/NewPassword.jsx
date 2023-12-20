@@ -6,7 +6,7 @@ import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import { Close } from '@mui/icons-material';
 import { MdLockOpen } from "react-icons/md";
 
-export default function NewPassword() {
+function NewPassword() {
 
   return (
 
@@ -63,3 +63,6 @@ export default function NewPassword() {
   
   );
 }
+
+
+export default  NewPassword

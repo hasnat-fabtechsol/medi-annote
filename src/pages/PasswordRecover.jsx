@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import { Close } from '@mui/icons-material';
 
-export default function PasswordRecover() {
+function PasswordRecover() {
 
   return (
 
@@ -57,3 +57,5 @@ export default function PasswordRecover() {
   
   );
 }
+
+export default  PasswordRecover

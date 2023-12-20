@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import { Close } from '@mui/icons-material';
 import { TiInputChecked } from "react-icons/ti";
-export default function Passwordchanged() {
+ function Passwordchanged() {
 
   return (
 
@@ -50,3 +50,4 @@ export default function Passwordchanged() {
   
   );
 }
+export default  Passwordchanged

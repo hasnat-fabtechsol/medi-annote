@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import { Close } from '@mui/icons-material';
 
-export default function Signin() {
+const  Signin=()=> {
 
 
   return (
@@ -74,3 +74,4 @@ export default function Signin() {
   
   );
 }
+export default Signin
