@@ -1,29 +1,32 @@
-import React, { useEffect, useRef, useState } from "react";
-import { fabric } from "fabric";
-import Lung from "../assets/lung.png";
+import React, { useEffect, useRef, useState } from 'react';
+import { fabric } from 'fabric';
+import Lung from '../assets/lung.png';
+import * as canvasUtils from '../modules/canvasUtils';
 
 const Annotate = () => {
-  
   const canvasRef = useRef(null);
   const [canvas, setCanvas] = useState(null);
+  const canvasContainerRef = useRef(null);
+
+  const aspectRatio = 2;
 
   useEffect(() => {
     const newCanvas = new fabric.Canvas(canvasRef.current, {
-      height: 400,
-      width: 1299 / 3,
-      backgroundColor: "#fff",
+      width: canvasContainerRef.current.offsetWidth,
+      height: canvasContainerRef.current.offsetWidth / aspectRatio,
+      backgroundColor: '#fff',
       selection: false,
       preserveObjectStacking: true,
     });
 
-    newCanvas.on("mouse:down", function (options) {
+    newCanvas.on('mouse:down', function (options) {
       if (options.target) {
         options.target.opacity = 0.5;
         newCanvas.renderAll();
       }
     });
 
-    newCanvas.on("mouse:up", function (options) {
+    newCanvas.on('mouse:up', function (options) {
       if (options.target) {
         options.target.opacity = 1;
         newCanvas.renderAll();
@@ -31,55 +34,59 @@ const Annotate = () => {
     });
 
     fabric.Image.fromURL(Lung, function (img) {
-      img.scaleToWidth(500);
-      img.scaleToHeight(500);
+      // Fit image to canvas size
+      img.scaleToWidth(newCanvas.width);
+      img.scaleToHeight(newCanvas.height);
       img.set({
         selectable: true,
-        resizable: true, // Enable resizing
-        originX: "left",
-        originY: "top",
+        resizable: true,
+        originX: 'left',
+        originY: 'top',
       });
       newCanvas.add(img);
     });
 
-    // Load canvas data from local storage, if available
-    const savedCanvasData = localStorage.getItem("canvasData");
-    if (savedCanvasData) {
-      newCanvas.loadFromJSON(savedCanvasData, () => {
-        newCanvas.renderAll();
-      });
-    }
-
-    // Set canvas to state
     setCanvas(newCanvas);
 
-    // Cleanup event listeners on component unmount
     return () => {
-      newCanvas.off("mouse:down");
-      newCanvas.off("mouse:up");
+      newCanvas.off('mouse:down');
+      newCanvas.off('mouse:up');
     };
-  }, []); // Empty dependency array ensures this effect runs only once
+  }, []);
 
   useEffect(() => {
-    // Save canvas data to local storage whenever the canvas changes
     if (canvas) {
       const canvasData = JSON.stringify(canvas.toObject());
-      localStorage.setItem("canvasData", canvasData);
+      localStorage.setItem('canvasData', canvasData);
     }
   }, [canvas]);
 
+  useEffect(() => {
+    // Ensure canvasContainerRef.current is set before accessing properties
+    if (canvas && canvasContainerRef.current) {
+      const containerWidth = canvasContainerRef.current.offsetWidth;
+      const containerHeight = containerWidth / aspectRatio;
+      canvas.setWidth(containerWidth);
+      canvas.setHeight(containerHeight);
+      canvas.renderAll();
+    }
+  }, [canvas, aspectRatio]);
+
+  const handleCanvasAction = (action, ...args) => {
+    canvasUtils.performCanvasAction(canvas, action, ...args);
+  };
+
   return (
-    <>
-      <div className="p-2 rounded-4 overflow-hidden" style={{ backgroundColor: "#181922" }}>
-        <div
-          className="vh-75 d-flex justify-content-center align-items-center"
-          id="canvasContainer"
-          style={{ height: "70vh" }}
-        >
-          <canvas ref={canvasRef} />
-        </div>
+    <div className="p-2 rounded-4" style={{ backgroundColor: '#181922' }}>
+      <div
+        ref={canvasContainerRef}
+        className="justify-content-center vh-75 align-items-center"
+        id="canvasContainer"
+        style={{ width: '100%' }}
+      >
+        <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />
       </div>
-    </>
+    </div>
   );
 };
 
