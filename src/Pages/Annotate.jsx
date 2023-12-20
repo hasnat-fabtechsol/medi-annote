@@ -35,10 +35,6 @@ const Annotate = () => {
       }
     });
 
-    console.log(newCanvas);
-
-
-
     const loadImage = () => {
       fabric.Image.fromURL(Lung, function (img) {
         // Fit image to canvas size
@@ -51,16 +47,8 @@ const Annotate = () => {
           originY: 'top',
         });
         newCanvas.add(img);
-
-        console.log(newCanvas);
-
-        
-    // Log the active object after the image is added
-  
       });
     };
-
-    console.log(newCanvas);
   
     // Load image and set canvas once the image is loaded
     loadImage();
@@ -103,12 +91,14 @@ const Annotate = () => {
 
 
 
+
   
 
   return (
     <>
     <div>
       {/* <TopNav  canvas={canvas} handleCanvasAction={handleCanvasAction}  /> */}
+      
     </div>  
     <div className="p-2 rounded-4" style={{ backgroundColor: '#181922' }}>
       <div

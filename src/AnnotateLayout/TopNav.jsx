@@ -24,7 +24,10 @@ import { performCanvasActions } from '../modules/canvasUtils';
 const TopNav = ({ canvas, handleCanvasAction }) => {
    
 
-
+  handleCanvasAction = (action) => {
+    performCanvasActions(canvas, action);
+    }
+        
     
 
 

@@ -12,28 +12,30 @@ export const performCanvasActions = (actions, canvas) => {
   console.log(actions , "actions");
   console.log(canvas , "canvas");
 
-  // Iterate over the actions and execute them
-  actions.forEach(({ action , canvas , args }) => {
-    switch (action) {
-      case 'delete':
-        deleteSelectedObjects(canvas);
-        break;
-      case 'rotate':
-        rotateSelectedObject(canvas, ...args);
-        break;
-      // Add more cases for other actions as needed
-      default:
-        console.warn(`Unknown canvas action: ${action}`);
+  // Loop through actions
+  actions.forEach((action) => {
+    // Check if action is available
+    if (!action) {
+      console.error('Action is not available');
+      return;
     }
+
+    // Check if action is a function
+    if (typeof action !== 'function') {
+      console.error('Action is not a function');
+      return;
+    }
+
+    // Execute action
+    action(canvas);
   });
+
+  
 };
-
-
 
 // Delete function
 const deleteSelectedObjects = (canvas) => {
-    canvas.remove(canvas.getActiveObject());
-   
+   canvas.remove(...canvas.getActiveObjects());
 };
 
 // Rotate function
