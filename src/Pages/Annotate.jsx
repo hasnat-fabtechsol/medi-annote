@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { fabric } from 'fabric';
 import Lung from '../assets/lung.png';
-import * as canvasUtils from '../modules/canvasUtils';
+import TopNav from '../AnnotateLayout/TopNav';
+import { performCanvasActions } from '../modules/canvasUtils';
+
 
 const Annotate = () => {
   const canvasRef = useRef(null);
@@ -33,26 +35,46 @@ const Annotate = () => {
       }
     });
 
-    fabric.Image.fromURL(Lung, function (img) {
-      // Fit image to canvas size
-      img.scaleToWidth(newCanvas.width);
-      img.scaleToHeight(newCanvas.height);
-      img.set({
-        selectable: true,
-        resizable: true,
-        originX: 'left',
-        originY: 'top',
+    console.log(newCanvas);
+
+
+
+    const loadImage = () => {
+      fabric.Image.fromURL(Lung, function (img) {
+        // Fit image to canvas size
+        img.scaleToWidth(newCanvas.width);
+        img.scaleToHeight(newCanvas.height);
+        img.set({
+          selectable: true,
+          resizable: true,
+          originX: 'left',
+          originY: 'top',
+        });
+        newCanvas.add(img);
+
+        console.log(newCanvas);
+
+        
+    // Log the active object after the image is added
+  
       });
-      newCanvas.add(img);
-    });
-
-    setCanvas(newCanvas);
-
-    return () => {
-      newCanvas.off('mouse:down');
-      newCanvas.off('mouse:up');
     };
+
+    console.log(newCanvas);
+  
+    // Load image and set canvas once the image is loaded
+    loadImage();
+    setCanvas(newCanvas);
+    
+ 
+
+    // return () => {
+    //   newCanvas.off('mouse:down');
+    //   newCanvas.off('mouse:up');
+    // };
   }, []);
+
+  console.log(canvas);
 
   useEffect(() => {
     if (canvas) {
@@ -72,11 +94,22 @@ const Annotate = () => {
     }
   }, [canvas, aspectRatio]);
 
-  const handleCanvasAction = (action, ...args) => {
-    canvasUtils.performCanvasAction(canvas, action, ...args);
-  };
+  // const handleCanvasAction = (action) => {
+  //   // Convert the single action to an array with a single object
+  //   performCanvasActions([{ action }], canvas);
+  // };
+
+
+
+
+
+  
 
   return (
+    <>
+    <div>
+      {/* <TopNav  canvas={canvas} handleCanvasAction={handleCanvasAction}  /> */}
+    </div>  
     <div className="p-2 rounded-4" style={{ backgroundColor: '#181922' }}>
       <div
         ref={canvasContainerRef}
@@ -87,6 +120,7 @@ const Annotate = () => {
         <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />
       </div>
     </div>
+    </>
   );
 };
 
