@@ -17,7 +17,7 @@ function Header(props) {
             <Navbar handleDrawerToggle={handleDrawerToggle} />
             <RightNav mobileOpen={mobileOpen} handleDrawerToggle={() => handleDrawerToggle()}/>
            
-            <SideNav  />
+            {/* <SideNav  /> */}
 
         </div>
 

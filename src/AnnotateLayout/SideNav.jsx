@@ -34,6 +34,8 @@ import { PiNotebookLight } from "react-icons/pi";
 import { FaGraduationCap } from "react-icons/fa6";
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { RxCursorArrow } from "react-icons/rx";
+import { fabric } from 'fabric';
+
 
 // import { useDispatch } from "react-redux";
 
@@ -64,6 +66,10 @@ const listItemData = [
 
 
 function SideNav(props) {
+  const {canvas} = props;
+ 
+  // console.log(canvas , "canvas");
+  // console.log(props , "props");
   const [show, setShow] = useState(false)
   const { window } = props;
   const navigate = useNavigate();
@@ -86,7 +92,9 @@ function SideNav(props) {
           {listItemData.map((value, i) => (
             <div key={i}>
               <div className=" my-0 m-2 " >
-                <RenderItem value={value} i={i} style={{ fontSize: "2rem" }} />
+                <RenderItem
+               
+                 value={value} i={i} style={{ fontSize: "2rem" }} />
               </div>
             </div>
           ))}

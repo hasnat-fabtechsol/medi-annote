@@ -1,78 +1,129 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { fabric } from 'fabric';
 import Lung from '../assets/lung.png';
+import { addRect, remove } from '../modules/canvasUtils';
 import TopNav from '../AnnotateLayout/TopNav';
-import { performCanvasActions } from '../modules/canvasUtils';
-
+import SideNav from '../AnnotateLayout/SideNav';
 
 const Annotate = () => {
   const canvasRef = useRef(null);
   const [canvas, setCanvas] = useState(null);
   const canvasContainerRef = useRef(null);
+  const [currentCanvasObject, setCurrentCanvasObject] = useState(null);
+  const [isDrawingMode, setIsDrawingMode] = useState(false);
+  let pathPoints = [];
 
   const aspectRatio = 2;
+  let mode;
+
+  const initCanvas = () => (
+    new fabric.Canvas('c', {
+      height: 800,
+      width: 800,
+      backgroundColor: '#aaaaaa',
+      selection: true, // Disable object selection
+    })
+  );
 
   useEffect(() => {
-    const newCanvas = new fabric.Canvas(canvasRef.current, {
-      width: canvasContainerRef.current.offsetWidth,
-      height: canvasContainerRef.current.offsetWidth / aspectRatio,
-      backgroundColor: '#fff',
-      selection: false,
-      preserveObjectStacking: true,
+    const canvas = initCanvas();
+    canvas.isDrawingMode = false;
+
+    canvas.on('object:modified', () => {
+      setCurrentCanvasObject(canvas.toObject().objects);
     });
 
-    newCanvas.on('mouse:down', function (options) {
-      if (options.target) {
-        options.target.opacity = 0.5;
-        newCanvas.renderAll();
+    canvas.on('mouse:down', (options) => {
+      if (isDrawingMode) {
+        pathPoints.push({ x: options.e.clientX, y: options.e.clientY });
+        console.log(pathPoints, "pathPoints");
       }
     });
 
-    newCanvas.on('mouse:up', function (options) {
-      if (options.target) {
-        options.target.opacity = 1;
-        newCanvas.renderAll();
+    canvas.on('mouse:move', (options) => {
+      if (isDrawingMode) {
+        pathPoints.push({ x: options.e.clientX, y: options.e.clientY });
       }
     });
 
-    const loadImage = () => {
-      fabric.Image.fromURL(Lung, function (img) {
-        // Fit image to canvas size
-        img.scaleToWidth(newCanvas.width);
-        img.scaleToHeight(newCanvas.height);
-        img.set({
-          selectable: true,
-          resizable: true,
-          originX: 'left',
-          originY: 'top',
-        });
-        newCanvas.add(img);
-      });
-    };
-  
-    // Load image and set canvas once the image is loaded
-    loadImage();
-    setCanvas(newCanvas);
-    
- 
+    canvas.on('mouse:up', () => {
+      if (isDrawingMode) {
+        createPathAndSelection(canvas, pathPoints);
+        pathPoints = [];
+        setIsDrawingMode(false);
+      }
+    });
 
-    // return () => {
-    //   newCanvas.off('mouse:down');
-    //   newCanvas.off('mouse:up');
-    // };
+    setCurrentCanvasObject(canvas.toObject().objects);
+    addImageToCanvas(canvas);
+    setCanvas(canvas);
   }, []);
 
-  console.log(canvas);
+  const addImageToCanvas = (canvas) => {
+    fabric.Image.fromURL(Lung, (img) => {
+      img.scaleToHeight(window.innerHeight / 1.5);
+      img.scaleToWidth(window.innerWidth / 1.5);
+      canvas.add(img);
+      canvas.centerObject(img);
+      canvas.setActiveObject(img);
+    });
+  };
+
+  const createPathAndSelection = (canvas, pathPoints) => {
+    const path = new fabric.Path(pathPoints, {
+      // Set path properties (stroke, fill, etc.)
+    });
+    canvas.add(path);
+
+    const selection = new fabric.Rect({
+      left: path.getBoundingRect().left,
+      top: path.getBoundingRect().top,
+      width: path.getBoundingRect().width,
+      height: path.getBoundingRect().height,
+      fill: 'rgba(40,40,40,0.3)',
+      selectable: false,
+    });
+    canvas.add(selection);
+  };
 
   useEffect(() => {
     if (canvas) {
-      const canvasData = JSON.stringify(canvas.toObject());
-      localStorage.setItem('canvasData', canvasData);
+      // console.log(currentCanvasObject);
+      // console.log(canvas.getActiveObject());
     }
-  }, [canvas]);
+  }, [currentCanvasObject]);
+
+  const handlePenToolClick = () => {
+    setIsDrawingMode(!isDrawingMode);
+    canvas.isDrawingMode = !isDrawingMode;
+    console.log(canvas.isDrawingMode);
+  };
+
+
+  function startDraw(canvas) {
+    if (mode != "pencil") {
+    mode = "pencil";
+    document.getElementById("button-draw").style.backgroundColor = "#2C9BF6";
+    
+    canvas.isDrawingMode = true;
+    // canvas.freeDrawingBrush.width = 3;
+    console.log(canvas.freeDrawingBrush);
+    fabric.PencilBrush.prototype.globalCompositeOperation = "source-over";
+    // canvas.renderAll();
+    }
+    else {
+        document.getElementById("button-draw").style.backgroundColor = "#333333";
+        mode = "select";
+        canvas.isDrawingMode = false;
+    }
+}
+
+
+  const handleDeleteButtonClick = () => {
+    remove(canvas);
+  };
 
   useEffect(() => {
-    // Ensure canvasContainerRef.current is set before accessing properties
     if (canvas && canvasContainerRef.current) {
       const containerWidth = canvasContainerRef.current.offsetWidth;
       const containerHeight = containerWidth / aspectRatio;
@@ -82,34 +133,23 @@ const Annotate = () => {
     }
   }, [canvas, aspectRatio]);
 
-  // const handleCanvasAction = (action) => {
-  //   // Convert the single action to an array with a single object
-  //   performCanvasActions([{ action }], canvas);
-  // };
-
-
-
-
-
-
-  
-
   return (
     <>
-    <div>
-      {/* <TopNav  canvas={canvas} handleCanvasAction={handleCanvasAction}  /> */}
-      
-    </div>  
-    <div className="p-2 rounded-4" style={{ backgroundColor: '#181922' }}>
-      <div
-        ref={canvasContainerRef}
-        className="justify-content-center vh-75 align-items-center"
-        id="canvasContainer"
-        style={{ width: '100%' }}
-      >
-        <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />
+      <div>
+        <TopNav canvas={canvas} />
+        <SideNav canvas={canvas} />
+        <button id='button-draw' onClick={startDraw}>Pen tool</button>
       </div>
-    </div>
+      <div className="p-2 rounded-4" style={{ backgroundColor: '#181922' }}>
+        <div
+          ref={canvasContainerRef}
+          className="justify-content-center vh-75 align-items-center"
+          id="canvasContainer"
+          style={{ width: '100%' }}
+        >
+          <canvas ref={canvasRef} id='c' style={{ width: '100%', height: '100%' }} />
+        </div>
+      </div>
     </>
   );
 };

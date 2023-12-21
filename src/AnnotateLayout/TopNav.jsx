@@ -18,15 +18,17 @@ import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { performCanvasActions } from '../modules/canvasUtils';
+import {addRect , remove , rotate} from '../modules/canvasUtils';
 
 
 
 const TopNav = ({ canvas, handleCanvasAction }) => {
+    // console.log(canvas);
    
 
-  handleCanvasAction = (action) => {
-    performCanvasActions(canvas, action);
-    }
+//   handleCanvasAction = (action) => {
+//     performCanvasActions(canvas, action);
+//     }
         
     
 
@@ -35,7 +37,7 @@ const TopNav = ({ canvas, handleCanvasAction }) => {
 
     return (
         <>
-            <AppBar position="" sx={{paddingTop:"80px" , backgroundColor:"transparent" , width:{md: `calc(100% - 0px)`} , boxShadow:"none" , margin:"auto" , paddingRight:{md : `270px`} , marginRight:"0px" , paddingLeft:"100px" }}>
+            <AppBar position="" sx={{paddingTop:"80px" , backgroundColor:"transparent" , width:{md: `calc(100% - 0px)`} , boxShadow:"none" , margin:"auto" , paddingRight:{md : `0px`} , marginRight:"0px" , paddingLeft:"0px" }}>
                 <Toolbar variant="dense" sx={{justifyContent:"space-between" , padding:"5px 0px"}}>
                 <div className="container">
                     <Box sx={{ display:"flex" , justifyContent:"space-between" , alignItems:"center" , overflowX:"auto"}}>
@@ -52,7 +54,9 @@ const TopNav = ({ canvas, handleCanvasAction }) => {
                             
                             </IconButton>
                             <IconButton sx={{padding:"5px"}}>
-                            <CachedIcon sx={{ fontSize: 32 , color:"#A7AEBF" , padding:"5px" , backgroundColor:"#14151D" , borderRadius:"6px" }}/>
+                            <CachedIcon
+                                onClick={() => { rotate(canvas); }}
+                             sx={{ fontSize: 32 , color:"#A7AEBF" , padding:"5px" , backgroundColor:"#14151D" , borderRadius:"6px" }}/>
                             </IconButton>
                         </Box>
                         <Box>
@@ -68,8 +72,11 @@ const TopNav = ({ canvas, handleCanvasAction }) => {
                             <DoneIcon sx={{ fontSize: 36 , color:"#2C9BF6" , backgroundColor:"#181922" , borderRadius:"50%" , border:"1px solid #2c9bf678" , padding:"8px"}}/>  
                             <DeleteOutlineOutlinedIcon
                              sx={{ fontSize: 36 , color:"#2C9BF6" , backgroundColor:"#181922" , borderRadius:"50%" , border:"1px solid #2c9bf678" , padding:"8px"}}
-                             onClick={() => handleCanvasAction('delete')}
                              
+                                onClick={() => {
+                                    remove(canvas); // Call your remove function here
+                                }}
+                                
                              /> 
                     
                         </Box>
