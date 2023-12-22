@@ -19,6 +19,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { performCanvasActions } from '../modules/canvasUtils';
 import {addRect , remove , rotate} from '../modules/canvasUtils';
+import ModeIcon from '@mui/icons-material/Mode';
 
 
 
@@ -58,6 +59,8 @@ const TopNav = ({ canvas, handleCanvasAction }) => {
                                 onClick={() => { rotate(canvas); }}
                              sx={{ fontSize: 32 , color:"#A7AEBF" , padding:"5px" , backgroundColor:"#14151D" , borderRadius:"6px" }}/>
                             </IconButton>
+                            <ModeIcon id="drawing-mode" sx={{ fontSize: 32 , color:"#A7AEBF" , padding:"5px" , backgroundColor:"#14151D" , borderRadius:"6px" , cursor:"pointer" }}/>
+
                         </Box>
                         <Box>
                             <p className="m-0 py-2 px-3 d-flex rounded-3" style={{backgroundColor:"#14151D"}}><span style={{color:"#2C9BF6"}} >01 </span> / <span>23</span></p>

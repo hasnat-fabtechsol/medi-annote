@@ -49,7 +49,7 @@ const listItemData = [
   // </svg>
   //  },
   {
-    
+    id: "move-tool",
     link: `/`,
     icon: <RxCursorArrow style={{fontSize:"24px"}}/>
   },
@@ -206,6 +206,7 @@ const RenderItem = ({ value, i }) => {
       key={i}
       component={NavLink}
       to={value?.link || ""}
+      id={value?.id || ""}
       disablePadding
       sx={listItemStyle}
       
