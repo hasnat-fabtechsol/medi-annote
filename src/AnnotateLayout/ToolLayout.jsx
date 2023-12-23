@@ -67,7 +67,7 @@ return (
 
 
       </Box>
-      <RightNav />
+      {/* <RightNav /> */}
       <div style={{position:"fixed" , bottom:"0" , left:"0" , right : "0" , zIndex:"1300"}}>
       <Footer />
       </div>

@@ -84,7 +84,8 @@ const listItemData = [
 
 
 
-function RightNav(props) {
+function RightNav(props ) {
+
   const location = useLocation();
   const [show, setShow] = useState(false)
   const { window } = props;
@@ -101,6 +102,29 @@ function RightNav(props) {
   const handleRemoveTag = (tagToRemove) => {
     setTagList((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
   };
+
+  const [text, setText] = useState('');
+
+
+
+ const {onInputChange , handleText} = props;
+ 
+
+ const handleInputChangeLocal = (e) => {
+  const newText = e.target.value;
+  setText(newText);
+   // Call the parent callback function with the new text
+};
+
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onInputChange(text);
+    handleText()
+    // Additional actions on form submission
+  };
+
 
   // const dispatch = useDispatch()
   const drawer = (
@@ -164,7 +188,7 @@ function RightNav(props) {
         </List>
 
         <Box sx={{backgroundColor:"#090B11" , padding:"0px 0px 10px" , borderRadius:"10px"}}>
-            <form >
+            <form  onSubmit={handleSubmit}>
             <Box
             sx={{
               display: 'flex',
@@ -178,8 +202,9 @@ function RightNav(props) {
               backgroundColor:"#212121"
             }}
           >
-            <input className="no-focus border-0 w-75 shadow-none" type="text" placeholder="Type a Text" style={{backgroundColor:"#212121"}} />
-            <Button type="submit" variant="contained" color="primary" sx={{borderRadius:"10px" , textTransform:"capitalize" , backgroundColor:"#2C9BF6"}}>
+            <input className="no-focus border-0 w-75 shadow-none" type="text" placeholder="Type a Text" style={{backgroundColor:"#212121"}}  value={text}
+        onChange={handleInputChangeLocal} />
+            <Button type="submit" onClick={handleText} variant="contained" id="enter-tag" color="primary" sx={{borderRadius:"10px" , textTransform:"capitalize" , backgroundColor:"#2C9BF6"}}>
               Enter
             </Button>
           </Box>
