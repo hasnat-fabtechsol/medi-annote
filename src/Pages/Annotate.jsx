@@ -1,123 +1,64 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect , useRef } from 'react';
 import { fabric } from 'fabric';
 import TopNav from '../AnnotateLayout/TopNav';
 import SideNav from '../AnnotateLayout/SideNav';
 import lung from '../assets/lung.png';
 import RightNav from '../AnnotateLayout/RightNav';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCanvas } from '../redux/canvasActions';
+
 
 const Annotate = () => {
   const [canvasData, setCanvas] = useState(null);
-  const [inputText, setInputText] = useState('');
- 
-
-  const handleInputChange = (text) => {
-
-    setInputText(text);
-  };
-  const container = useRef(null);
-  const fabric = window.fabric;
-
-  const initCanvas = (canvasId) => {
-    const newCanvas = new fabric.Canvas(canvasId, {
-      height: container.current.clientHeight,
-      width: container.current.clientWidth,
-      preserveObjectStacking: true,
-    });
-
-    // Set initial drawing mode to false
-    newCanvas.isDrawingMode = false;
-    newCanvas.selection = true;
-
-    // Event listener for after render
-    newCanvas.on('after:render', () => {
-      console.log('Canvas is rendered');
-      // Additional actions after rendering
-    });
-
-    return newCanvas;
-  };
-
-  const addImageToCanvas = (canvasInstance) => {
-    fabric.Image.fromURL(lung, function (img) {
-      canvasInstance.add(
-        img.set({
-          left: 0,
-          top: 0,
-          angle: 0,
-          width: canvasInstance.width - 20,
-          height: canvasInstance.height,
-          padding: 0,
-          cornerSize: 10,
-        })
-      );
-      canvasInstance.renderAll();
-    });
-  };
-
-  const setupEventListeners = (canvasInstance) => {
-    const drawingModeEl = document.getElementById('drawing-mode');
-    drawingModeEl.addEventListener('click', (e) => {
-      e.preventDefault();
-      canvasInstance.isDrawingMode = true;
-      // pencil width
-      canvasInstance.freeDrawingBrush.width = 5;
-      canvasInstance.freeDrawingBrush.color = 'red';
-    });
-
-    const addTextEl = document.getElementById('enter-tag');
-    console.log(addTextEl, 'add text');
-    addTextEl.addEventListener('click', (e) => {
-      
-      e.preventDefault();
-      console.log("click");
-      alert("");
-      canvasInstance.isDrawingMode = false;
-      canvasInstance.selection = false;
-      const text = new fabric.IText(inputText, {
-        left: 50,
-        top: 50,
-        fontFamily: 'arial black',
-        fill: '#333',
-        fontSize: 50,
-      });
-      canvasInstance.add(text);
-      canvasInstance.renderAll();
-    });
-
-
-    console.log(inputText , "passed test");   
-
-    const moveToolEl = document.getElementById('move-tool');
-    moveToolEl.addEventListener('click', (e) => {
-      e.preventDefault();
-      canvasInstance.isDrawingMode = false;
-      canvasInstance.selection = true;
-    });
-
-    const jsonEl = document.getElementById('to-json');
-    jsonEl.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log(canvasInstance.toJSON());
-    });
-  };
-
-
- 
-
-  
+  const containerRef = useRef(null);
+  const canvas  = useSelector(state => state.canvasState);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const canvasInstance = initCanvas('c');
-    addImageToCanvas(canvasInstance);
-    setupEventListeners(canvasInstance);
-   
+   dispatch(updateCanvas(initCanvas())); 
+  }, []); // Empty dependency array to run the effect only once
+
+  const initCanvas = () => {
+    const newCanvas = new fabric.Canvas("c", {
+      width: containerRef.current.offsetWidth,
+      height: containerRef.current.offsetHeight,
+      backgroundColor: "#fff",
+      selection: false,
+    });
+
+    newCanvas.on("selection:created", () => {
+      const selectedObject = newCanvas.getActiveObject();
+      // console.log("Object selected:", selectedObject);
+      // You can add the selected object to the canvas or perform other actions.
+      // newCanvas.add(selectedObject);
+    });
+
+    fabric.Image.fromURL(lung, (img) => {
+      img.scaleToWidth(containerRef.current.offsetWidth);
+      img.scaleToHeight(containerRef.current.offsetHeight);
     
-    canvasInstance.renderAll();
+      newCanvas.setBackgroundImage(
+        img.toDataURL(), // Convert the fabric.Image to a data URL
+        newCanvas.renderAll.bind(newCanvas), // Render callback
+        {
+          // Optionally add optional settings here
+          backgroundImageOpacity: 0.5,
+          backgroundImageStretch: false,
+          backgroundPosition: 'center',
+        }
+        
+      );
+    });
 
-    setCanvas(canvasInstance);
-    console.log(canvasData, 'data');
-  }, [fabric]);
 
+    
+    return newCanvas;
+  }
+
+  const handleJson = () => {
+    console.log(canvas);
+    console.log(canvas.toJSON());
+  }
 
 
   return (
@@ -125,20 +66,11 @@ const Annotate = () => {
       <div>
         <TopNav />
         <SideNav />
-        <RightNav  onInputChange={handleInputChange}  />
-        {/* Your buttons and other UI elements */}
+        <RightNav />
       </div>
-      <button id="to-json">Json</button>
-      <button id="add-text">Add Text</button>
-      <div className="p-2 rounded-4" style={{ backgroundColor: '#181922' }}>
-        <div
-          ref={container}
-          className="justify-content-center vh-75 rounded-3 align-items-center"
-          id="canvasContainer"
-          style={{ width: '100%' }}
-        >
-          <canvas id="c" style={{ width: '100%', height: '100%' }} />
-        </div>
+      <button id="to-json" onClick={handleJson}>Json</button>
+      <div ref={containerRef} id="canvasContainer">
+        <canvas id="c" style={{ width: '100%', height: '100%' }} />
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -19,7 +19,7 @@ import { Divider } from "@mui/material";
 // import { useDispatch } from "react-redux";
 // import { logout } from '../../redux/counterSlice'
 import { buttonStyle, listItemStyle } from "./SideNavStyles";
-import { PermIdentity, Settings } from "@mui/icons-material";
+import { LensTwoTone, PermIdentity, Settings } from "@mui/icons-material";
 import FolderSharedIcon from '@mui/icons-material/FolderShared';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -40,8 +40,9 @@ import ClearIcon from '@mui/icons-material/Clear';
 import IconButton from '@mui/material/IconButton';
 import { useLocation } from "react-router-dom";
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
-
-// import { useDispatch } from "react-redux";
+import { fabric } from 'fabric';
+import { useSelector } from 'react-redux';
+import utils from '../modules/canvasUtils';
 
 
 const drawerWidth = 270;
@@ -71,20 +72,53 @@ const listItemData = [
     label : "Lung",
     link: "/",
     
-  },
- 
-  
-  
+  }, 
 
 
 ];
 
 
-
-
-
-
 function RightNav(props ) {
+  const [textInput, setTextInput] = useState('');
+  const canvas = useSelector((state) => state.canvasState)
+
+  // console.log(canvas , "redux");
+
+  const handleButton = () => {
+  // Do something with textInput
+
+  const activeObject = canvas.getActiveObject();
+
+
+  if(activeObject){
+      // Example: Add text to the canvas
+  const textObject = new fabric.IText(textInput, {
+    left: activeObject.left + activeObject.width / 2,
+    top: activeObject.top + activeObject.height / 2,
+    fontFamily: 'arial black',
+    fill: 'red',
+    fontSize: 20,
+  });
+
+  
+    // Group the existing object and the new text
+    var group = new fabric.Group([activeObject, textObject], {
+      left: activeObject.left,
+      top: activeObject.top,
+    });
+
+    canvas.remove(activeObject);
+    canvas.add(group);
+    canvas.setActiveObject(group);
+    canvas.requestRenderAll();
+
+
+  }
+
+  };
+
+
+
 
   const location = useLocation();
   const [show, setShow] = useState(false)
@@ -95,8 +129,9 @@ function RightNav(props ) {
   const handleAddTag = () => {
     if (newTag.trim() !== '') {
       setTagList((prevTags) => [...prevTags, newTag.trim()]);
-      setNewTag('');
+      setNewTag();
     }
+    console.log(newTag);
   };
 
   const handleRemoveTag = (tagToRemove) => {
@@ -104,10 +139,6 @@ function RightNav(props ) {
   };
 
   const [text, setText] = useState('');
-
-
-
- const {onInputChange , handleText} = props;
  
 
  const handleInputChangeLocal = (e) => {
@@ -120,8 +151,11 @@ function RightNav(props ) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onInputChange(text);
-    handleText()
+
+    alert(`Submitting Text: ${text}`);
+    handleAddTag();
+
+    
     // Additional actions on form submission
   };
 
@@ -202,9 +236,10 @@ function RightNav(props ) {
               backgroundColor:"#212121"
             }}
           >
-            <input className="no-focus border-0 w-75 shadow-none" type="text" placeholder="Type a Text" style={{backgroundColor:"#212121"}}  value={text}
-        onChange={handleInputChangeLocal} />
-            <Button type="submit" onClick={handleText} variant="contained" id="enter-tag" color="primary" sx={{borderRadius:"10px" , textTransform:"capitalize" , backgroundColor:"#2C9BF6"}}>
+            <input className="no-focus border-0 w-75 shadow-none text-white" type="text" placeholder="Type a Text" style={{backgroundColor:"#212121"}}  value={textInput}
+        onChange={(e) => setTextInput(e.target.value)}
+         />
+            <Button type="submit"  onClick={handleButton} variant="contained" id="enter-tag" color="primary" sx={{borderRadius:"10px" , textTransform:"capitalize" , backgroundColor:"#2C9BF6"}}>
               Enter
             </Button>
           </Box>

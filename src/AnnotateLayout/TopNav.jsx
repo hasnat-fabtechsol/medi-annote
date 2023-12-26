@@ -18,18 +18,34 @@ import TaskOutlinedIcon from '@mui/icons-material/TaskOutlined';
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { performCanvasActions } from '../modules/canvasUtils';
-import {addRect , remove , rotate} from '../modules/canvasUtils';
+// import {addRect , remove , rotate} from '../modules/canvasUtils';
 import ModeIcon from '@mui/icons-material/Mode';
+import { fabric } from 'fabric';
+import { useDispatch, useSelector } from 'react-redux';
+import utils from '../modules/canvasUtils';
 
 
 
-const TopNav = ({ canvas, handleCanvasAction }) => {
-    // console.log(canvas);
-   
+const TopNav = () => {
+    const dispatch = useDispatch();
+    const canvas = useSelector((state) => state.canvasState);
 
-//   handleCanvasAction = (action) => {
-//     performCanvasActions(canvas, action);
-//     }
+    const{
+        isDrawingMode,
+        remove,
+    }=utils();
+    
+
+    const handleDrawingModeClick = () => {
+        isDrawingMode(canvas);
+      
+    }
+
+    const handleRemove = (e) => {
+        e.preventDefault();
+        remove(canvas);
+    }
+    
         
     
 
@@ -56,10 +72,12 @@ const TopNav = ({ canvas, handleCanvasAction }) => {
                             </IconButton>
                             <IconButton sx={{padding:"5px"}}>
                             <CachedIcon
-                                onClick={() => { rotate(canvas); }}
+                                // onClick={() => { rotate(canvas); }}
                              sx={{ fontSize: 32 , color:"#A7AEBF" , padding:"5px" , backgroundColor:"#14151D" , borderRadius:"6px" }}/>
                             </IconButton>
-                            <ModeIcon id="drawing-mode" sx={{ fontSize: 32 , color:"#A7AEBF" , padding:"5px" , backgroundColor:"#14151D" , borderRadius:"6px" , cursor:"pointer" }}/>
+                            <ModeIcon
+                                onClick={handleDrawingModeClick}
+                             id="drawing-mode" sx={{ fontSize: 32 , color:"#A7AEBF" , padding:"5px" , backgroundColor:"#14151D" , borderRadius:"6px" , cursor:"pointer" }}/>
 
                         </Box>
                         <Box>
@@ -76,9 +94,7 @@ const TopNav = ({ canvas, handleCanvasAction }) => {
                             <DeleteOutlineOutlinedIcon
                              sx={{ fontSize: 36 , color:"#2C9BF6" , backgroundColor:"#181922" , borderRadius:"50%" , border:"1px solid #2c9bf678" , padding:"8px"}}
                              
-                                onClick={() => {
-                                    remove(canvas); // Call your remove function here
-                                }}
+                                onClick={handleRemove}
                                 
                              /> 
                     

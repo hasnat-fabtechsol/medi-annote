@@ -1,66 +1,62 @@
 import { fabric } from 'fabric';
 import React from 'react';
+import { useSelector } from "react-redux";
 
 
+export default function CanvasUtils() {
 
-export const addRect = (canvas,  rect) => {
-  if (rect) {
-    const testRect = new fabric.Rect(rect);
-    canvas.add(testRect);
-    canvas.setActiveObject(testRect);
-   
-  } else {
-    const testRect = new fabric.Rect({
-      height: 200,
-      width: 200,
-      fill: '#555555',
-      rx: 0,
-      ry: 0,
+  const canvas = useSelector((state) => state.canvasState);
+
+  // remove function for canvas
+  const remove = (canvas) => {
+    const objectsactive=canvas.getActiveObject();
+    canvas.remove(objectsactive);
+    canvas.renderAll();
+  };
+
+  // rotate function for canvas
+  const rotate = (canvas) => {
+    canvas.getActiveObjects().forEach((obj) => {
+      obj.rotate(45);
     });
-    canvas.add(testRect);
-    canvas.setActiveObject(testRect);
-    
-   
+  };
+
+  // free Drawing mode function for canvas
+  function isDrawingMode(canvas) {
+    canvas.isDrawingMode = true;
+    canvas.freeDrawingBrush.width = 5;
+    canvas.freeDrawingBrush.color = 'red';
   }
-}
 
-
-
-
-
-export const remove= (canvas) => {
-  canvas.getObjects().forEach((obj) => {
-    canvas.remove(obj);
-  });
-  // canvas.discardActiveObject().renderAll();
-}
-
-export const rotate = (canvas) => {
+  function moveTool(canvas){
+ 
+    canvas.isDrawingMode = false;
+    canvas.selection=true;
+     // Get the selected object
   const activeObject = canvas.getActiveObject();
-  const angle = 45; // Set the rotation angle to 45 degrees
 
   if (activeObject) {
-    // Check if the object has a stored rotation angle property
-    if (!activeObject.hasOwnProperty('_totalRotation')) {
-      // If not, initialize it with 0
-      activeObject._totalRotation = 0;
-    }
-
-    // Set the origin to the center
-    activeObject.originX = 'center';
-    activeObject.originY = 'center';
-
-    // Increment the total rotation angle
-    activeObject._totalRotation += angle;
-
-    // Apply the cumulative rotation
-    activeObject.set({
-      angle: activeObject._totalRotation
-    });
-
-    canvas.renderAll();
+    // If an object is selected, set it as the active object
+    canvas.setActiveObject(activeObject);
   }
-};
+
+  }
+
+  // destructor above functions
+  const utils = {
+    remove,
+    rotate,
+    isDrawingMode,
+    moveTool
+  };
+
+  return utils;
+
+}
+
+
+
+
 
 
 
