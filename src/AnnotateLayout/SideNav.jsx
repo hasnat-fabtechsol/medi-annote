@@ -72,6 +72,7 @@ const listItemData = [
 
 function SideNav(props) {
   const canvas = useSelector((state) => state.canvasState);
+  console.log(canvas , "canvas");
 
   const{
     moveTool

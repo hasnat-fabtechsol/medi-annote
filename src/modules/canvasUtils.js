@@ -25,7 +25,7 @@ export default function CanvasUtils() {
   function isDrawingMode(canvas) {
     canvas.isDrawingMode = true;
     canvas.freeDrawingBrush.width = 5;
-    canvas.freeDrawingBrush.color = 'red';
+    canvas.freeDrawingBrush.color = '#67D2B6';
   }
 
   function moveTool(canvas){
@@ -42,12 +42,43 @@ export default function CanvasUtils() {
 
   }
 
+  function fillColor(value) {
+    console.log(value);
+  
+    // Convert hex color to RGB
+    const rgbColor = new fabric.Color(value).getSource();
+  
+    
+  
+    // Set opacity to 0.5
+    const rgbaColor = `rgba(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]}, 0.4)`;
+  
+   
+  
+    // Set the fill property of the active object
+    canvas.getActiveObject()?.set("fill", rgbaColor);
+
+    if (canvas.getActiveObject()?.type === "group") {
+      canvas.getActiveObject()?.forEachObject(function (obj) {
+        if(obj.type === "path") {
+          obj.set("fill", rgbaColor);
+        }
+       
+      });
+    }
+  
+    // Request render to update the canvas
+    canvas.requestRenderAll();
+  }
+  
+
   // destructor above functions
   const utils = {
     remove,
     rotate,
     isDrawingMode,
-    moveTool
+    moveTool,
+    fillColor
   };
 
   return utils;

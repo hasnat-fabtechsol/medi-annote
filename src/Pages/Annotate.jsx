@@ -1,5 +1,6 @@
 import React, { useState, useEffect , useRef } from 'react';
 import { fabric } from 'fabric';
+import "fabric-history";
 import TopNav from '../AnnotateLayout/TopNav';
 import SideNav from '../AnnotateLayout/SideNav';
 import lung from '../assets/lung.png';
@@ -65,11 +66,11 @@ const Annotate = () => {
 
   return (
     <>
-      <div>
+      
         <TopNav />
         <SideNav />
         <RightNav />
-      </div>
+      
       <button id="to-json" onClick={handleJson}>Json</button>
       <div ref={containerRef} id="canvasContainer">
         <canvas id="c" style={{ width: '100%', height: '100%' }} />
