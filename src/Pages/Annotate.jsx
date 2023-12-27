@@ -34,8 +34,10 @@ const Annotate = () => {
     });
 
     fabric.Image.fromURL(lung, (img) => {
-      img.scaleToWidth(containerRef.current.offsetWidth);
+      img.scaleToWidth(containerRef.current.offsetWidth/img.width);
       img.scaleToHeight(containerRef.current.offsetHeight);
+      img.scaleX = containerRef.current.offsetWidth/img.width;
+      img.scaleY = containerRef.current.offsetHeight/img.height;
     
       newCanvas.setBackgroundImage(
         img.toDataURL(), // Convert the fabric.Image to a data URL
@@ -44,7 +46,7 @@ const Annotate = () => {
           // Optionally add optional settings here
           backgroundImageOpacity: 0.5,
           backgroundImageStretch: false,
-          backgroundPosition: 'center',
+          backgroundPosition: '50% 0%',
         }
         
       );

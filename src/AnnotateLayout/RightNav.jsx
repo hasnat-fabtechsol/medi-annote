@@ -151,11 +151,7 @@ function RightNav(props ) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    alert(`Submitting Text: ${text}`);
     handleAddTag();
-
-    
     // Additional actions on form submission
   };
 
