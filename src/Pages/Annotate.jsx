@@ -1,12 +1,12 @@
 import React, { useState, useEffect , useRef } from 'react';
 import { fabric } from 'fabric';
 import "fabric-history";
-import TopNav from '../AnnotateLayout/TopNav';
-import SideNav from '../AnnotateLayout/SideNav';
+
 import lung from '../assets/lung.png';
 import RightNav from '../AnnotateLayout/RightNav';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateCanvas } from '../redux/canvasActions';
+import TopNav from '../AnnotateLayout/TopNav';
 
 
 const Annotate = () => {
@@ -23,7 +23,7 @@ const Annotate = () => {
     const newCanvas = new fabric.Canvas("c", {
       width: containerRef.current.offsetWidth,
       height: containerRef.current.offsetHeight,
-      backgroundColor: "#fff",
+      backgroundColor: "#f2f2f2",
       selection: false,
     });
 
@@ -59,19 +59,24 @@ const Annotate = () => {
   }
 
   const handleJson = () => {
+    // console.log(canvas);
+    // console.log(canvas.toJSON());
+  }
+
+  const saveData = () => {
+    dispatch(updateCanvas(canvas));
     console.log(canvas);
-    console.log(canvas.toJSON());
   }
 
 
   return (
     <>
       
-        <TopNav />
-        <SideNav />
-        <RightNav />
+      <TopNav />
+     
       
       <button id="to-json" onClick={handleJson}>Json</button>
+      <button id="to-json" onClick={saveData}>Save</button>
       <div ref={containerRef} id="canvasContainer">
         <canvas id="c" style={{ width: '100%', height: '100%' }} />
       </div>

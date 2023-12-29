@@ -100,10 +100,16 @@ function RightNav(props ) {
         fontFamily: 'arial black',
         fill: 'white',
         backgroundColor: '#4DB395',
-        fontSize: 20,
+        fontSize: 17,
         fontFamily: 'Helvetica',
         padding: 10,
+        strokeWidth: 5, // Simulate padding with a border
+       
+       
       });
+
+          
+      
   
       textObject.left -= textObject.width / 2;
       textObject.top -= textObject.height / 2;

@@ -70,9 +70,9 @@ const TopNav = () => {
     return (
         <>
             <AppBar position="" sx={{paddingTop:"80px" , backgroundColor:"transparent" , width:{md: `calc(100% - 0px)`} , boxShadow:"none" , margin:"auto" , paddingRight:{md : `0px`} , marginRight:"0px" , paddingLeft:"0px" }}>
-                <Toolbar variant="dense" sx={{justifyContent:"space-between" , padding:"5px 0px"}}>
-                <div className="container">
-                    <Box sx={{ display:"flex" , justifyContent:"space-between" , alignItems:"center" , overflowX:"visible"}}>
+                <Box variant="dense" sx={{justifyContent:"space-between" , padding:"5px 0px"}}>
+                <div className="container p-0">
+                    <Box sx={{ display:"flex" , flexWrap:"wrap", justifyContent:"space-between" , alignItems:"center" , overflowX:"visible"}}>
                         <Box sx={{ display:"flex"  , alignItems:"center" }}>
                             <IconButton>
                             <IoIosArrowBack style={{ fontSize: 32 , color:"#A7AEBF" ,padding:"5px" , backgroundColor:"#14151D"  }} />
@@ -176,7 +176,7 @@ const TopNav = () => {
                 
 
                 
-            </Toolbar>
+            </Box>
 
             
             </AppBar>
