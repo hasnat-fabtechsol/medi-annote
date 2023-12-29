@@ -82,9 +82,9 @@ const Review = () => {
       </div>
        <div >
             <div className="p-3 rounded-4 position-relative overflow-hidden text-center" style={{backgroundColor:"#181922"}}>
-                <button className="btn rounded-3 text-white position-absolute " style={{   backgroundColor:"#00AD26" , top:"50px" , left:"50%"}}>Complete</button>
+                <button className="btn rounded-3 text-white position-absolute " style={{   backgroundColor:"#00AD26" , top:"50px" , left:"50%" , zIndex:"99" , transform:"translate(-50%)"}}>Complete</button>
                 <div ref={containerRef} id="canvasContainer">
-        <canvas id="c" style={{ width: '100%', height: '100%' }} />
+        <canvas id="c" style={{ width: '100%', height: '100%' , border:"2px solid #00AD26" }} />
       </div>
             </div>
        </div>

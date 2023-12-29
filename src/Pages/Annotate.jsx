@@ -63,10 +63,10 @@ const Annotate = () => {
     // console.log(canvas.toJSON());
   }
 
-  const saveData = () => {
-    dispatch(updateCanvas(canvas));
-    console.log(canvas);
-  }
+  // const saveData = () => {
+  //   dispatch(updateCanvas(canvas));
+  //   console.log(canvas);
+  // }
 
 
   return (
@@ -75,9 +75,9 @@ const Annotate = () => {
       <TopNav />
      
       
-      <button id="to-json" onClick={handleJson}>Json</button>
-      <button id="to-json" onClick={saveData}>Save</button>
-      <div ref={containerRef} id="canvasContainer">
+      {/* <button id="to-json" onClick={handleJson}>Json</button>
+      <button id="to-json" onClick={saveData}>Save</button> */}
+      <div ref={containerRef} id="canvasContainer" className='vh-75'>
         <canvas id="c" style={{ width: '100%', height: '100%' }} />
       </div>
     </>
