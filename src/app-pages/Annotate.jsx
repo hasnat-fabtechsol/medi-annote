@@ -34,6 +34,8 @@ const Annotate = () => {
       // newCanvas.add(selectedObject);
     });
 
+    
+
     fabric.Image.fromURL(lung, (img) => {
       img.scaleToWidth(containerRef.current.offsetWidth/img.width);
       img.scaleToHeight(containerRef.current.offsetHeight);

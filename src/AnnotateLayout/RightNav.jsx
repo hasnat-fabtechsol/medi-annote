@@ -94,34 +94,40 @@ function RightNav(props ) {
     const activeObject = canvas.getActiveObject();
   
     if (activeObject) {
-      const textObject = new fabric.Text(textInput, {
-        left: activeObject.left + activeObject.width / 2,
-        top: activeObject.top + activeObject.height / 2,
-        fontFamily: 'arial black',
-        fill: 'white',
-        backgroundColor: '#4DB395',
-        fontSize: 17,
-        fontFamily: 'Helvetica',
-        padding: 10,
-        strokeWidth: 5, // Simulate padding with a border
-       
-       
-      });
+      let textObject;
+  
+      if (activeObject.type === 'group') {
+        // If the active object is a group, update the text content
+        textObject = activeObject.item(1); // Assuming the text object is at index 1 in the group
+        textObject.set('text', textInput);
 
-          
-      
+        textObject.left -=  textObject.width / 2 ;
+      } else {
+        // If the active object is not a group, create a new text object
+        textObject = new fabric.Text(textInput, {
+          left: activeObject.left + activeObject.width / 2,
+          top: activeObject.top + activeObject.height / 2,
+          fontFamily: 'arial black',
+          fill: 'white',
+          backgroundColor: '#4DB395',
+          fontSize: 17,
+          fontFamily: 'Helvetica',
+          padding: 10,
+          strokeWidth: 5, // Simulate padding with a border
+        });
   
-      textObject.left -= textObject.width / 2;
-      textObject.top -= textObject.height / 2;
+        textObject.left -= textObject.width / 2;
+        textObject.top -= textObject.height / 2;
   
-      const group = new fabric.Group([activeObject, textObject], {
-        left: activeObject.left,
-        top: activeObject.top,
-      });
+        const group = new fabric.Group([activeObject, textObject], {
+          left: activeObject.left,
+          top: activeObject.top,
+        });
   
-      canvas.remove(activeObject);
-      canvas.add(group);
-      canvas.setActiveObject(group);
+        canvas.remove(activeObject);
+        canvas.add(group);
+        canvas.setActiveObject(group);
+      }
   
       return new Promise((resolve) => {
         canvas.requestRenderAll();
@@ -131,6 +137,7 @@ function RightNav(props ) {
       return Promise.resolve();
     }
   };
+  
 
 
 
