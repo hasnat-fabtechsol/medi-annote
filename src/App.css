@@ -126,6 +126,10 @@ img{
   width: 100%;
 }
 
+canvas{
+  border-radius: 32px;
+}
+
 
 
 @media (max-width: 470px){

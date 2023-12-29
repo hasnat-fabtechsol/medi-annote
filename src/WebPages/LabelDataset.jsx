@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const LabelDataset = () => (
     <>
@@ -41,21 +42,21 @@ const LabelDataset = () => (
                 </div>
                 <div className="search-body rounded-bottom-4  px-4 pt-4 pb-5 overflow-auto" style={{Height:"50vh"}}>
                     <div className=" width-wrapper d-flex flex-wrap" >
-                        <div className="position-relative img-card" style={{paddingBottom:"13rem"}}>
+                        <Link to={"/review"} className="position-relative img-card" style={{paddingBottom:"13rem"}}>
                                 <img className="w-100 position-absolute h-100 object-fit-cover rounded-4" src={require('../assets/lung-1.png')} alt="" />
-                        </div>
-                        <div className="position-relative img-card" style={{paddingBottom:"13rem"}}>
+                        </Link>
+                        <Link to={"/review"} className="position-relative img-card" style={{paddingBottom:"13rem"}}>
                                 <img className="w-100 position-absolute h-100 object-fit-cover rounded-4" src={require('../assets/lung-2.png')} alt="" />
-                        </div>
-                        <div className="position-relative img-card" style={{paddingBottom:"13rem"}}>
+                        </Link>
+                        <Link to={"review"} className="position-relative img-card" style={{paddingBottom:"13rem"}}>
                                 <img className="w-100 position-absolute h-100 object-fit-cover rounded-4" src={require('../assets/lung-3.png')} alt="" />
-                        </div>
-                        <div className="position-relative img-card" style={{paddingBottom:"13rem"}}>
+                        </Link>
+                        <Link to={"/review"} className="position-relative img-card" style={{paddingBottom:"13rem"}}>
                                 <img className="w-100 position-absolute h-100 object-fit-cover rounded-4" src={require('../assets/lung.png')} alt="" />
-                        </div>
-                        <div className="position-relative img-card" style={{paddingBottom:"13rem"}}>
+                        </Link>
+                        <Link to={"/review"} className="position-relative img-card" style={{paddingBottom:"13rem"}}>
                                 <img className="w-100 position-absolute h-100 object-fit-cover rounded-4" src={require('../assets/lung.png')} alt="" />
-                        </div>
+                        </Link>
                     </div>
                    
                 </div>

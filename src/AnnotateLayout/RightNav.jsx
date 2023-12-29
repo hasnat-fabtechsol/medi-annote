@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -19,7 +19,7 @@ import { Divider } from "@mui/material";
 // import { useDispatch } from "react-redux";
 // import { logout } from '../../redux/counterSlice'
 import { buttonStyle, listItemStyle } from "./SideNavStyles";
-import { PermIdentity, Settings } from "@mui/icons-material";
+import { LensTwoTone, PermIdentity, Settings } from "@mui/icons-material";
 import FolderSharedIcon from '@mui/icons-material/FolderShared';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import InventoryIcon from '@mui/icons-material/Inventory';
@@ -40,8 +40,10 @@ import ClearIcon from '@mui/icons-material/Clear';
 import IconButton from '@mui/material/IconButton';
 import { useLocation } from "react-router-dom";
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
+import { fabric } from 'fabric';
+import { useSelector } from 'react-redux';
+import utils from '../modules/canvasUtils';
 
-// import { useDispatch } from "react-redux";
 
 
 const drawerWidth = 270;
@@ -71,51 +73,140 @@ const listItemData = [
     label : "Lung",
     link: "/",
     
-  },
- 
-  
-  
+  }, 
 
 
 ];
 
 
+function RightNav(props ) {
+  const [textInput, setTextInput] = useState('');
+  const canvas = useSelector((state) => state.canvasState);
+  console.log(canvas , "redux");
+
+  // empty array that will hold the canvas group objects
+  const [canvasGroups, setCanvasGroups] = useState([]);
+
+
+  // console.log(canvas , "redux");
+
+  const handleButton = () => {
+    const activeObject = canvas.getActiveObject();
+  
+    if (activeObject) {
+      const textObject = new fabric.Text(textInput, {
+        left: activeObject.left + activeObject.width / 2,
+        top: activeObject.top + activeObject.height / 2,
+        fontFamily: 'arial black',
+        fill: 'white',
+        backgroundColor: '#4DB395',
+        fontSize: 17,
+        fontFamily: 'Helvetica',
+        padding: 10,
+        strokeWidth: 5, // Simulate padding with a border
+       
+       
+      });
+
+          
+      
+  
+      textObject.left -= textObject.width / 2;
+      textObject.top -= textObject.height / 2;
+  
+      const group = new fabric.Group([activeObject, textObject], {
+        left: activeObject.left,
+        top: activeObject.top,
+      });
+  
+      canvas.remove(activeObject);
+      canvas.add(group);
+      canvas.setActiveObject(group);
+  
+      return new Promise((resolve) => {
+        canvas.requestRenderAll();
+        resolve();
+      });
+    } else {
+      return Promise.resolve();
+    }
+  };
 
 
 
 
-function RightNav(props) {
   const location = useLocation();
   const [show, setShow] = useState(false)
   const { window } = props;
   const navigate = useNavigate();
-  const [tagList, setTagList] = useState([ 'React', 'Material UI' ]);
-  const [newTag, setNewTag] = useState('');
-  const handleAddTag = () => {
-    if (newTag.trim() !== '') {
-      setTagList((prevTags) => [...prevTags, newTag.trim()]);
-      setNewTag('');
-    }
+
+  const [tagList, setTagList] = useState([]);
+
+  
+  const handleAddTag = async () => {
+    const activeObject = canvas.getActiveObject();
+    const groups = canvas.getObjects().filter((o) => o.type === 'group');
+    setCanvasGroups(groups);
+
+    if(activeObject) {
+  
+    groups.forEach((group) => {
+      // Assuming the text object is always at index 1 in the group
+      const textObject = group.item(1);
+  
+      if (textObject && textObject.type === 'text') {
+        const text = textObject.text.trim();
+  
+        if (text !== '') {
+          setTagList([...tagList,text]);
+        
+        }
+      }
+    });
+  }
   };
+
+  console.log(tagList , "taglist");
+  
+
 
   const handleRemoveTag = (tagToRemove) => {
     setTagList((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
   };
 
+  const [text, setText] = useState('');
+ 
+
+ const handleInputChangeLocal = (e) => {
+  const newText = e.target.value;
+  setText(newText);
+   // Call the parent callback function with the new text
+};
+
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // First, handleButton is executed and awaited
+  await handleButton();
+
+  // After handleButton is completed, handleAddTag is executed
+  handleAddTag();
+
+  // Additional actions on form submission
+};
+
+
   // const dispatch = useDispatch()
   const drawer = (
     <div className="px-3 d-flex justify-content-center text-center" style={{ backgroundColor: "#181922", height: "100vh" }}>
       <div className="zoom w-100">
-
-
         <div className=" py-2" >
-
           <div className="p-3  mx-auto" style={{ width: "6rem" }}>
             {/* <Link to='/'><img width={"100%"} className="" src={require("../assets/certificate-paper.png")} alt="" /></Link> */}
-          </div>
-          
+          </div>       
         </div>
-
         {location.pathname === "/annotate" ? (
         <Button
           className="px-3 py-3 rounded-3"
@@ -149,10 +240,6 @@ function RightNav(props) {
           </Button>
         </Link>
       )}
-        
-        
-        
-
         <List className="pt-5 pb-5">
           {listItemData.map((value, i) => (
             <div key={i}>
@@ -164,7 +251,7 @@ function RightNav(props) {
         </List>
 
         <Box sx={{backgroundColor:"#090B11" , padding:"0px 0px 10px" , borderRadius:"10px"}}>
-            <form >
+            <form  onSubmit={handleSubmit}>
             <Box
             sx={{
               display: 'flex',
@@ -178,8 +265,10 @@ function RightNav(props) {
               backgroundColor:"#212121"
             }}
           >
-            <input className="no-focus border-0 w-75 shadow-none" type="text" placeholder="Type a Text" style={{backgroundColor:"#212121"}} />
-            <Button type="submit" variant="contained" color="primary" sx={{borderRadius:"10px" , textTransform:"capitalize" , backgroundColor:"#2C9BF6"}}>
+            <input className="no-focus border-0 w-75 shadow-none text-white" type="text" placeholder="Type a Text" style={{backgroundColor:"#212121"}}  value={textInput}
+        onChange={(e) => setTextInput(e.target.value)}
+         />
+            <Button type="submit"  variant="contained" id="enter-tag" color="primary" sx={{borderRadius:"10px" , textTransform:"capitalize" , backgroundColor:"#2C9BF6"}}>
               Enter
             </Button>
           </Box>
@@ -212,11 +301,7 @@ function RightNav(props) {
           />
         ))}
       </Box>   
-
-
-        </Box>
-
-        
+        </Box>       
       </div>
       {/* {show &&
           <MuiDialog 
@@ -245,10 +330,6 @@ function RightNav(props) {
           } */}
     </div>
   );
-
-
-
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
@@ -313,14 +394,11 @@ function RightNav(props) {
   );
 }
 
-
 RightNav.propTypes = {
   window: PropTypes.func,
 };
 
 export default RightNav;
-
-
 
 const RenderItem = ({ value, i }) => {
   return (

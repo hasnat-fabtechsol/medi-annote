@@ -34,6 +34,10 @@ import { PiNotebookLight } from "react-icons/pi";
 import { FaGraduationCap } from "react-icons/fa6";
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { RxCursorArrow } from "react-icons/rx";
+import { fabric } from 'fabric';
+import utils from '../modules/canvasUtils';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 // import { useDispatch } from "react-redux";
 
@@ -47,7 +51,7 @@ const listItemData = [
   // </svg>
   //  },
   {
-    
+    id: "move-tool",
     link: `/`,
     icon: <RxCursorArrow style={{fontSize:"24px"}}/>
   },
@@ -63,7 +67,32 @@ const listItemData = [
 
 
 
+
+
+
 function SideNav(props) {
+  const canvas = useSelector((state) => state.canvasState);
+  console.log(canvas , "canvas");
+
+  const{
+    moveTool
+}=utils();
+
+const handleItemClick = (e) => {
+  e.preventDefault();
+ moveTool(canvas)
+  
+
+  
+
+ 
+
+
+
+};
+ 
+  // console.log(canvas , "canvas");
+  // console.log(props , "props");
   const [show, setShow] = useState(false)
   const { window } = props;
   const navigate = useNavigate();
@@ -86,7 +115,9 @@ function SideNav(props) {
           {listItemData.map((value, i) => (
             <div key={i}>
               <div className=" my-0 m-2 " >
-                <RenderItem value={value} i={i} style={{ fontSize: "2rem" }} />
+                <RenderItem
+               
+                 value={value} i={i} handleItemClick={handleItemClick}  style={{ fontSize: "2rem" }} />
               </div>
             </div>
           ))}
@@ -192,14 +223,16 @@ export default SideNav;
 
 
 
-const RenderItem = ({ value, i }) => {
+const RenderItem = ({ value, i , handleItemClick}) => {
   return (
     value.link ? <ListItem
       key={i}
       component={NavLink}
       to={value?.link || ""}
+      id={value?.id || ""}
       disablePadding
       sx={listItemStyle}
+      onClick={handleItemClick}
       
     >
       <ListItemButton

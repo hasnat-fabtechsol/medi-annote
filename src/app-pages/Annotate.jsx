@@ -1,92 +1,86 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect , useRef } from 'react';
 import { fabric } from 'fabric';
-import Lung from '../assets/lung.png';
-import * as canvasUtils from '../modules/canvasUtils';
+import "fabric-history";
+
+import lung from '../assets/lung.png';
+import RightNav from '../AnnotateLayout/RightNav';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCanvas } from '../redux/canvasActions';
+import TopNav from '../AnnotateLayout/TopNav';
+
 
 const Annotate = () => {
-  const canvasRef = useRef(null);
-  const [canvas, setCanvas] = useState(null);
-  const canvasContainerRef = useRef(null);
-
-  const aspectRatio = 2;
+  const [canvasData, setCanvas] = useState(null);
+  const containerRef = useRef(null);
+  const canvas  = useSelector(state => state.canvasState);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const newCanvas = new fabric.Canvas(canvasRef.current, {
-      width: canvasContainerRef.current.offsetWidth,
-      height: canvasContainerRef.current.offsetWidth / aspectRatio,
-      backgroundColor: '#fff',
+   dispatch(updateCanvas(initCanvas())); 
+  }, []); // Empty dependency array to run the effect only once
+
+  const initCanvas = () => {
+    const newCanvas = new fabric.Canvas("c", {
+      width: containerRef.current.offsetWidth,
+      height: containerRef.current.offsetHeight,
+      backgroundColor: "#f2f2f2",
       selection: false,
-      preserveObjectStacking: true,
     });
 
-    newCanvas.on('mouse:down', function (options) {
-      if (options.target) {
-        options.target.opacity = 0.5;
-        newCanvas.renderAll();
-      }
+    newCanvas.on("selection:created", () => {
+      const selectedObject = newCanvas.getActiveObject();
+      // console.log("Object selected:", selectedObject);
+      // You can add the selected object to the canvas or perform other actions.
+      // newCanvas.add(selectedObject);
     });
 
-    newCanvas.on('mouse:up', function (options) {
-      if (options.target) {
-        options.target.opacity = 1;
-        newCanvas.renderAll();
-      }
+    fabric.Image.fromURL(lung, (img) => {
+      img.scaleToWidth(containerRef.current.offsetWidth/img.width);
+      img.scaleToHeight(containerRef.current.offsetHeight);
+      img.scaleX = containerRef.current.offsetWidth/img.width;
+      img.scaleY = containerRef.current.offsetHeight/img.height;
+    
+      newCanvas.setBackgroundImage(
+        img.toDataURL(), // Convert the fabric.Image to a data URL
+        newCanvas.renderAll.bind(newCanvas), // Render callback
+        {
+          // Optionally add optional settings here
+          backgroundImageOpacity: 0.5,
+          backgroundImageStretch: false,
+          backgroundPosition: '50% 0%',
+        }
+        
+      );
     });
 
-    fabric.Image.fromURL(Lung, function (img) {
-      // Fit image to canvas size
-      img.scaleToWidth(newCanvas.width);
-      img.scaleToHeight(newCanvas.height);
-      img.set({
-        selectable: true,
-        resizable: true,
-        originX: 'left',
-        originY: 'top',
-      });
-      newCanvas.add(img);
-    });
 
-    setCanvas(newCanvas);
+    
+    return newCanvas;
+  }
 
-    return () => {
-      newCanvas.off('mouse:down');
-      newCanvas.off('mouse:up');
-    };
-  }, []);
+  const handleJson = () => {
+    // console.log(canvas);
+    // console.log(canvas.toJSON());
+  }
 
-  useEffect(() => {
-    if (canvas) {
-      const canvasData = JSON.stringify(canvas.toObject());
-      localStorage.setItem('canvasData', canvasData);
-    }
-  }, [canvas]);
+  // const saveData = () => {
+  //   dispatch(updateCanvas(canvas));
+  //   console.log(canvas);
+  // }
 
-  useEffect(() => {
-    // Ensure canvasContainerRef.current is set before accessing properties
-    if (canvas && canvasContainerRef.current) {
-      const containerWidth = canvasContainerRef.current.offsetWidth;
-      const containerHeight = containerWidth / aspectRatio;
-      canvas.setWidth(containerWidth);
-      canvas.setHeight(containerHeight);
-      canvas.renderAll();
-    }
-  }, [canvas, aspectRatio]);
-
-  const handleCanvasAction = (action, ...args) => {
-    canvasUtils.performCanvasAction(canvas, action, ...args);
-  };
 
   return (
-    <div className="p-2 rounded-4" style={{ backgroundColor: '#181922' }}>
-      <div
-        ref={canvasContainerRef}
-        className="justify-content-center vh-75 align-items-center"
-        id="canvasContainer"
-        style={{ width: '100%' }}
-      >
-        <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />
+    <>
+      
+      <TopNav />
+     
+      
+      {/* <button id="to-json" onClick={handleJson}>Json</button>
+      <button id="to-json" onClick={saveData}>Save</button> */}
+      <div ref={containerRef} id="canvasContainer" className='vh-75'>
+        <canvas id="c" style={{ width: '100%', height: '100%' }} />
       </div>
-    </div>
+    </>
   );
 };
 
