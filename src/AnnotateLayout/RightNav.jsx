@@ -83,6 +83,12 @@ function RightNav(props ) {
   const [textInput, setTextInput] = useState('');
   const canvas = useSelector((state) => state.canvasState);
   console.log(canvas , "redux");
+  const location = useLocation();
+  const [show, setShow] = useState(false)
+  const { window } = props;
+  const navigate = useNavigate();
+
+  const [tagList, setTagList] = useState([]);
 
   // empty array that will hold the canvas group objects
   const [canvasGroups, setCanvasGroups] = useState([]);
@@ -101,7 +107,24 @@ function RightNav(props ) {
         textObject = activeObject.item(1); // Assuming the text object is at index 1 in the group
         textObject.set('text', textInput);
 
-        textObject.left -=  textObject.width / 2 ;
+        // get the text object's width and height
+        const textWidth = textObject.width;
+        const textHeight = textObject.height;
+
+        // get the current position of the text object
+        const textLeft = textObject.left;
+        console.log(textLeft , "textLeft");
+        
+        textObject.left = textLeft - textWidth / 4;
+       
+
+        
+
+     
+
+        
+
+        // textObject.left -=  textObject.width / 1.5 ;
       } else {
         // If the active object is not a group, create a new text object
         textObject = new fabric.Text(textInput, {
@@ -141,14 +164,6 @@ function RightNav(props ) {
 
 
 
-
-  const location = useLocation();
-  const [show, setShow] = useState(false)
-  const { window } = props;
-  const navigate = useNavigate();
-
-  const [tagList, setTagList] = useState([]);
-
   
   const handleAddTag = async () => {
     const activeObject = canvas.getActiveObject();
@@ -156,30 +171,62 @@ function RightNav(props ) {
     setCanvasGroups(groups);
 
     if(activeObject) {
-  
-    groups.forEach((group) => {
-      // Assuming the text object is always at index 1 in the group
-      const textObject = group.item(1);
-  
-      if (textObject && textObject.type === 'text') {
-        const text = textObject.text.trim();
-  
-        if (text !== '') {
-          setTagList([...tagList,text]);
-        
+
+      if (activeObject.type === 'group') {
+        const groupIndex = groups.findIndex((g) => g === activeObject);
+        console.log(groupIndex , "groupIndex"); 
+        // remove the current group from the canvas
+
+
+        if (groupIndex !== -1) {
+          const group = groups[groupIndex];
+          const textObject = group.item(1);
+          const text = textObject.text;
+          console.log(text, "text");
+    
+          // If there is already a tag for this group, update it
+          setTagList((prevTags) => {
+            const newTags = [...prevTags];
+            newTags[groupIndex] = text;
+            return newTags;
+          });
+    
+          setText('');
         }
-      }
-    });
-  }
+
+      } 
+}
   };
 
   console.log(tagList , "taglist");
   
-
-
   const handleRemoveTag = (tagToRemove) => {
-    setTagList((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
+    setTagList((prevTags) => {
+      const tagIndexToRemove = prevTags.indexOf(tagToRemove);
+  
+      if (tagIndexToRemove !== -1) {
+        // Remove the associated group from the canvas
+        const removedGroup = canvasGroups[tagIndexToRemove];
+        if (removedGroup) {
+          canvas.remove(removedGroup);
+  
+          // Update the canvasGroups state
+          const newCanvasGroups = [...canvasGroups];
+          newCanvasGroups.splice(tagIndexToRemove, 1);
+          setCanvasGroups(newCanvasGroups);
+        }
+      }
+  
+      // Remove the tag from the tagList
+      return prevTags.filter((tag) => tag !== tagToRemove);
+    });
   };
+  
+  // put the tag text in the input field
+  const putTagText = (tagText) => {
+    setTextInput(tagText);
+  };
+  
 
   const [text, setText] = useState('');
  
@@ -190,8 +237,6 @@ function RightNav(props ) {
    // Call the parent callback function with the new text
 };
 
-
-
 const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -200,6 +245,9 @@ const handleSubmit = async (e) => {
 
   // After handleButton is completed, handleAddTag is executed
   handleAddTag();
+
+  // Reset the input field
+  setTextInput('');
 
   // Additional actions on form submission
 };
@@ -301,9 +349,15 @@ const handleSubmit = async (e) => {
             key={tag}
             label={tag}
             onDelete={() => handleRemoveTag(tag)}
-          
+            onClick={() => putTagText(tag)}
+            // hover color
+
             variant="outlined"
-            sx={{ margin: '4px' , backgroundColor:"#2C9BF6" , color : "white" , border:"none" }}
+            sx={{ margin: '4px' , backgroundColor:"#2C9BF6" , color : "white" , border:"none" , ':hover': {
+              backgroundColor: "#2C9BF6 !important" ,  // Change the background color on hover
+              color: "white",             // Change the text color on hover
+              // Add more styles for hover effect if needed
+            }, }}
             deleteIcon={<IconButton size="small" edge="end"><ClearIcon sx={{color:"#fff"}} /></IconButton>}
           />
         ))}
