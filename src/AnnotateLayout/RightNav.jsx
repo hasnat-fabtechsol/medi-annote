@@ -77,23 +77,16 @@ const listItemData = [
 
 
 ];
-
-
 function RightNav(props ) {
   const [textInput, setTextInput] = useState('');
   const canvas = useSelector((state) => state.canvasState);
-  console.log(canvas , "redux");
   const location = useLocation();
   const [show, setShow] = useState(false)
   const { window } = props;
   const navigate = useNavigate();
-
   const [tagList, setTagList] = useState([]);
-
   // empty array that will hold the canvas group objects
   const [canvasGroups, setCanvasGroups] = useState([]);
-
-
   // console.log(canvas , "redux");
 
   const handleButton = () => {
@@ -112,17 +105,8 @@ function RightNav(props ) {
         const textHeight = textObject.height;
 
         // get the current position of the text object
-        const textLeft = textObject.left;
-        console.log(textLeft , "textLeft");
-        
+        const textLeft = textObject.left; 
         textObject.left = textLeft - textWidth / 4;
-       
-
-        
-
-     
-
-        
 
         // textObject.left -=  textObject.width / 1.5 ;
       } else {
@@ -161,9 +145,6 @@ function RightNav(props ) {
     }
   };
   
-
-
-
   
   const handleAddTag = async () => {
     const activeObject = canvas.getActiveObject();
@@ -174,32 +155,24 @@ function RightNav(props ) {
 
       if (activeObject.type === 'group') {
         const groupIndex = groups.findIndex((g) => g === activeObject);
-        console.log(groupIndex , "groupIndex"); 
+       
         // remove the current group from the canvas
-
-
         if (groupIndex !== -1) {
           const group = groups[groupIndex];
           const textObject = group.item(1);
           const text = textObject.text;
-          console.log(text, "text");
-    
           // If there is already a tag for this group, update it
           setTagList((prevTags) => {
             const newTags = [...prevTags];
             newTags[groupIndex] = text;
             return newTags;
           });
-    
-          setText('');
         }
 
       } 
 }
   };
 
-  console.log(tagList , "taglist");
-  
   const handleRemoveTag = (tagToRemove) => {
     setTagList((prevTags) => {
       const tagIndexToRemove = prevTags.indexOf(tagToRemove);
@@ -226,32 +199,21 @@ function RightNav(props ) {
   const putTagText = (tagText) => {
     setTextInput(tagText);
   };
-  
 
-  const [text, setText] = useState('');
- 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
- const handleInputChangeLocal = (e) => {
-  const newText = e.target.value;
-  setText(newText);
-   // Call the parent callback function with the new text
-};
+    // First, handleButton is executed and awaited
+    await handleButton();
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+    // After handleButton is completed, handleAddTag is executed
+    handleAddTag();
 
-  // First, handleButton is executed and awaited
-  await handleButton();
+    // Reset the input field
+    setTextInput('');
 
-  // After handleButton is completed, handleAddTag is executed
-  handleAddTag();
-
-  // Reset the input field
-  setTextInput('');
-
-  // Additional actions on form submission
-};
-
+    // Additional actions on form submission
+  };
 
   // const dispatch = useDispatch()
   const drawer = (

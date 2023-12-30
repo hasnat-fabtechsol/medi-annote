@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 
 export default function CanvasUtils() {
-
   const canvas = useSelector((state) => state.canvasState);
 
   // remove function for canvas
@@ -83,7 +82,6 @@ export default function CanvasUtils() {
     // Request render to update the canvas
     canvas.requestRenderAll();
   }
-  
 
   // destructor above functions
   const utils = {

@@ -60,6 +60,12 @@ const TopNav = () => {
     const redo =() =>{
       canvas && canvas.redo();
     }
+
+    // save canvas to local storage
+    const saveCanvas = (canvas) => {
+      const json = canvas.toJSON();
+      localStorage.setItem('myCanvas', JSON.stringify(json));
+    }
     
         
     
@@ -154,7 +160,9 @@ const TopNav = () => {
                             <IoIosArrowForward style={{ fontSize: 22 , color:"#2C9BF6"   }} />
                             <TaskOutlinedIcon sx={{ fontSize: 36 , color:"#2C9BF6"  , }}/>
                             <IoIosArrowForward style={{ fontSize: 22 , color:"#2C9BF6"   }} />
-                            <DoneIcon sx={{ fontSize: 36 , color:"#2C9BF6" , backgroundColor:"#181922" , borderRadius:"50%" , border:"1px solid #2c9bf678" , padding:"8px"}}/>  
+                            <DoneIcon
+                             onClick={() => {saveCanvas(canvas); }}
+                             sx={{ fontSize: 36 , color:"#2C9BF6" , backgroundColor:"#181922" , borderRadius:"50%" , border:"1px solid #2c9bf678" , padding:"8px"}}/>  
                             <DeleteOutlineOutlinedIcon
                              sx={{ fontSize: 36 , color:"#2C9BF6" , backgroundColor:"#181922" , borderRadius:"50%" , border:"1px solid #2c9bf678" , padding:"8px"}}
                                 onClick={handleRemove} 
