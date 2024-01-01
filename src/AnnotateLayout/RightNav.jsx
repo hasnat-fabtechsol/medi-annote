@@ -98,6 +98,7 @@ function RightNav(props ) {
       if (activeObject.type === 'group') {
         // If the active object is a group, update the text content
         textObject = activeObject.item(1); // Assuming the text object is at index 1 in the group
+        const oldTextWidth = textObject.width;
         textObject.set('text', textInput);
 
         // get the text object's width and height
@@ -106,7 +107,7 @@ function RightNav(props ) {
 
         // get the current position of the text object
         const textLeft = textObject.left; 
-        textObject.left = textLeft - textWidth / 4;
+        textObject.left = textLeft - (oldTextWidth / 2);
 
         // textObject.left -=  textObject.width / 1.5 ;
       } else {
