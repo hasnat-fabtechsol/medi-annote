@@ -20,11 +20,17 @@ import {
   import IconButton from '@mui/material/IconButton';
   import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
   import TextField from '@mui/material/TextField';
+    import { useState } from 'react';
 
 
 const Dataset = () => {
 
+        const [images, setImages] = useState([]);
+
         const handleFileUpload = (event) => {
+             // Handle file upload logic here
+    const selectedImages = Array.from(event.target.files);
+    setImages(selectedImages);
           // Handle file upload logic here
           console.log(event.target.files);
         };    
@@ -69,9 +75,22 @@ const Dataset = () => {
                                                     placeholder='Upload File'
                                                     hidden
                                                     onChange={handleFileUpload}
+                                                    multiple
+                                                    
                                                 />
                                             </Button>
+                                            {images.length > 0 ? (
+                                            images.map((image) => (
+                                                <img
+                                                key={image.name}
+                                                src={URL.createObjectURL(image)}
+                                                alt={image.name}
+                                                style={{ height: "40px" }}
+                                                />
+                                            ))
+                                            ) : (
                                             <span className="text-white ms-2">Select File</span>
+                                            )}
                                         </div>
                                         <Button
                                             variant="contained"

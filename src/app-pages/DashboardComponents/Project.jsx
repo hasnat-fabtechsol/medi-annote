@@ -24,16 +24,16 @@ const Project = () => {
         },
         {
             id: 2,
-            name: "Projects name 01" },
+            name: "Projects name 02" },
         {
             id: 3,
-          name: "Projects name 02" },
+          name: "Projects name 03" },
         {
             id: 4,
-             name: "Projects name 03" },
+             name: "Projects name 04" },
         { 
            id: 5, 
-            name: "Projects name 04" },
+            name: "Projects name 05" },
       ];
 
     return (

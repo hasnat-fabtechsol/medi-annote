@@ -19,6 +19,7 @@ import Review from './app-pages/Review';
 import WebLayout from './WebPages/LayOut';
 import LabelDataset from './WebPages/LabelDataset';
 import EmailConfirmationPage from './app-pages/EmailConfirmation';
+import LabelFile from './component/LabelFile';
 
 
 
@@ -29,6 +30,7 @@ function App() {
    <Router>
     <Routes>
       <Route path="/" element={<SignUp/>}/>
+      <Route path="/label" element={<LabelFile/>}/>
 
       <Route element={<Layout/>}>
         <Route path="/email-confirmation" element={<EmailConfirmationPage/>}/>
