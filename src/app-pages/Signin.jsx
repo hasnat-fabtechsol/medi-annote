@@ -55,12 +55,10 @@ const  Signin=()=> {
 
 <div className="row">
   <Link type='submit' to={"/search"} class="btn text-light btn-primary text-center px-5 mb-2  mx-auto" >Sign in</Link>
-  <div className="text-center mb-1  ">
+  <div className="text-center mb-4  ">
   <p style={{fontSize:"10px"}}>Have some problems? <Link to={"/"}  >Go back to Sign up </Link>   </p>
   </div>
-  <div className="text-center mb-5  ">
-  <p style={{fontSize:"10px"}}>Try to login as admin? <Link to={"/project"}  >Login as Admin </Link>   </p>
-  </div>
+  
 </div>
         </div>
   

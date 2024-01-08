@@ -19,6 +19,7 @@ import Review from './app-pages/Review';
 import WebLayout from './WebPages/LayOut';
 import LabelDataset from './WebPages/LabelDataset';
 import EmailConfirmationPage from './app-pages/EmailConfirmation';
+import LabelFile from './component/LabelFile';
 
 
 
@@ -29,17 +30,14 @@ function App() {
    <Router>
     <Routes>
       <Route path="/" element={<SignUp/>}/>
+      <Route path="/label" element={<LabelFile/>}/>
 
       <Route element={<Layout/>}>
-
-      <Route path="/email-confirmation" element={<EmailConfirmationPage/>}/>
-      <Route path="/sign-in" element={<Signin/>}/>
-      <Route path="/password-recover" element={<PasswordRecover/>}/>
-      <Route path="/new-password" element={<NewPassword/>}/>
-      <Route path="/password-changed" element={<Passwordchanged/>}/>
-      
-
-
+        <Route path="/email-confirmation" element={<EmailConfirmationPage/>}/>
+        <Route path="/sign-in" element={<Signin/>}/>
+        <Route path="/password-recover" element={<PasswordRecover/>}/>
+        <Route path="/new-password" element={<NewPassword/>}/>
+        <Route path="/password-changed" element={<Passwordchanged/>}/>
       </Route>
       
       <Route element={<DashboardLayout/>}>
@@ -51,13 +49,11 @@ function App() {
       </Route>
 
       <Route element={<ToolLayout/>}>
-        <Route path="/tool" element={<Testa/>}/>
         <Route path="/annotate" element={<Annotate/>}/>
         <Route path="/review" element={<Review/>}/>
       </Route>
 
       <Route element={<WebLayout/>}>
-        <Route path="/web" element={<Testa/>}/>
         <Route path="/search" element={<LabelDataset/>}/>
       </Route>
       

@@ -8,12 +8,7 @@ import { Outlet, Link, useNavigate, Navigate } from "react-router-dom";
 import Header from './Header';
 // import Navbar from './Navbar';
 import SideNav from './SideNav';
-import TopNav from './TopNav';
-import RightNav from './RightNav';
 import Footer from '../component/Footer';
-
-
-
 
 const ToolLayout = ({type}) => {
   // const [mobileOpen, setMobileOpen] = useState(false);
@@ -36,10 +31,8 @@ return (
 
   <Box  sx={{ display: "block",backgroundColor:"#131217"  , position:"relative",height:"100vh"  }}>
   <CssBaseline />
-  <div>
   <Header />
-  </div>
-  
+  <SideNav />
 
   {/* <div>
   <TopNav />
@@ -55,16 +48,8 @@ return (
       paddingRight:{md: `270px`}
     }}
   >
-    
-
-
-
 
       <Outlet context={{type}}  style={{backgroundColor:"#181922"}}/>
-   
-
-     
-
 
       </Box>
       {/* <RightNav /> */}

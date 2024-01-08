@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 
 export default function CanvasUtils() {
-
   const canvas = useSelector((state) => state.canvasState);
 
   // remove function for canvas
@@ -26,6 +25,19 @@ export default function CanvasUtils() {
     canvas.isDrawingMode = true;
     canvas.freeDrawingBrush.width = 5;
     canvas.freeDrawingBrush.color = '#67D2B6';
+    canvas.on('path:created', function(e) {
+      e.path.set({
+        fill: 'rgba(69,127,115 , 0.7)',
+        stroke: '#67D2B6',
+        strokeWidth: 5,
+        strokeLineCap: 'round',
+        strokeLineJoin: 'round',
+        strokeMiterLimit: 10,
+        selectable: true,
+        evented: true,
+      });
+    });
+    
   }
 
   function moveTool(canvas){
@@ -51,7 +63,7 @@ export default function CanvasUtils() {
     
   
     // Set opacity to 0.5
-    const rgbaColor = `rgba(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]}, 0.4)`;
+    const rgbaColor = `rgba(${rgbColor[0]}, ${rgbColor[1]}, ${rgbColor[2]}, 0.6)`;
   
    
   
@@ -70,7 +82,6 @@ export default function CanvasUtils() {
     // Request render to update the canvas
     canvas.requestRenderAll();
   }
-  
 
   // destructor above functions
   const utils = {

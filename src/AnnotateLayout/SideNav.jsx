@@ -10,37 +10,18 @@ import ListItemText from "@mui/material/ListItemText";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import { NavLink, useNavigate } from "react-router-dom";
-import LogoutIcon from "@mui/icons-material/Logout";
-import Button from '@mui/material/Button';
 import { FaUserCircle, FaShoppingBag, FaUserCheck, FaCog } from "react-icons/fa";
 import { BsStopwatchFill } from "react-icons/bs";
 import Typography from "@mui/material/Typography";
 import { Divider } from "@mui/material";
-// import { useDispatch } from "react-redux";
-// import { logout } from '../../redux/counterSlice'
 import { buttonStyle, listItemStyle } from "./SideNavStyles";
-import { PermIdentity, Settings } from "@mui/icons-material";
-import FolderSharedIcon from '@mui/icons-material/FolderShared';
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
-import InventoryIcon from '@mui/icons-material/Inventory';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import ChatIcon from '@mui/icons-material/Chat';
-import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
 // import { logout } from "../redux/authSlice";
-import { Link } from "react-router-dom";
-import { RxDashboard } from "react-icons/rx";
-import { PiNotebookLight } from "react-icons/pi";
-import { FaGraduationCap } from "react-icons/fa6";
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import { RxCursorArrow } from "react-icons/rx";
 import { fabric } from 'fabric';
 import utils from '../modules/canvasUtils';
 import { useDispatch, useSelector } from 'react-redux';
-
-
 // import { useDispatch } from "react-redux";
-
 
 const drawerWidth = 100;
 
@@ -55,19 +36,8 @@ const listItemData = [
     link: `/`,
     icon: <RxCursorArrow style={{fontSize:"24px"}}/>
   },
-  
-  
- 
-  
-  
-
 
 ];
-
-
-
-
-
 
 
 function SideNav(props) {
@@ -80,15 +50,7 @@ function SideNav(props) {
 
 const handleItemClick = (e) => {
   e.preventDefault();
- moveTool(canvas)
-  
-
-  
-
- 
-
-
-
+ moveTool(canvas);
 };
  
   // console.log(canvas , "canvas");
@@ -100,17 +62,12 @@ const handleItemClick = (e) => {
   const drawer = (
     <div className="" style={{ backgroundColor: "#181922", height: "100vh" }}>
       <div className="zoom">
-
-
         <div className=" py-2" >
-
           <div className="p-3  mx-auto" style={{ width: "6rem" }}>
             {/* <Link to='/'><img width={"100%"} className="" src={require("../assets/certificate-paper.png")} alt="" /></Link> */}
           </div>
           
         </div>
-        
-
         <List className="pt-5">
           {listItemData.map((value, i) => (
             <div key={i}>
@@ -121,9 +78,7 @@ const handleItemClick = (e) => {
               </div>
             </div>
           ))}
-        </List>
-
-        
+        </List>  
       </div>
       {/* {show &&
           <MuiDialog 
@@ -153,9 +108,6 @@ const handleItemClick = (e) => {
     </div>
   );
 
-
-
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
@@ -165,63 +117,23 @@ const handleItemClick = (e) => {
       component="nav"
       sx={{
         width: { md: drawerWidth , xs : "85px"} ,
-        flexShrink: { md: 0 },
+        position: "fixed",
+        left: 0,
+        
         bgcolor: "black",
       }}
       aria-label="mailbox folders"
-    >
-      {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-      <Drawer
-        container={container}
-        variant="temporary"
-        // open={props.mobileOpen}
-        // onClose={props.handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        sx={{
-          display: { xs: "block", md: "none" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: drawerWidth,
-            bgcolor: "#272938",
-            color: "#AFB7BE",
-            zIndex: { md: 1405, xs: 1405 },
-          },
-        }}
-      >
+    >  
         {drawer}
-      </Drawer>
-      <Drawer
-
-        variant="permanent"
-        sx={{
-          display: { xs: "block", md: "block" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            bgcolor: "#272938",
-            color: "#AFB7BE",
-            width: { md: drawerWidth , xs : "85px"} ,
-            zIndex: { md: 1100, xs: 1200 },
-          },
-        }}
-        open
-      >
-        {drawer}
-      </Drawer>
-
     </Box>
   );
 }
-
 
 SideNav.propTypes = {
   window: PropTypes.func,
 };
 
 export default SideNav;
-
-
 
 const RenderItem = ({ value, i , handleItemClick}) => {
   return (
