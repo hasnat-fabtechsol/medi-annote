@@ -84,7 +84,7 @@ import { NavLink} from "react-router-dom";
         </li>
         <li className="nav-item  dropdown">
 
-          <NavLink
+          {/* <NavLink
             className=" text-light btn rounded-3 "
             exact
             activeClassName="active"
@@ -94,7 +94,7 @@ import { NavLink} from "react-router-dom";
            
           >
             Log in
-          </NavLink>
+          </NavLink> */}
     
         </li>
 
